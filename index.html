@@ -199,6 +199,23 @@
     margin:2px 0;
   }
 
+  .thresh{
+    background:#fff;
+    border:1px solid var(--rule);
+    border-left:5px solid var(--lane2);
+    border-radius:3px;
+    padding:13px 18px;
+    margin:0 0 20px;
+    font-size:13.5px;
+  }
+  .thresh b{color:var(--lane2)}
+  .thresh .q{
+    font-weight:700;
+    color:var(--ink);
+    display:block;
+    margin-bottom:3px;
+    font-size:14px;
+  }
   .note{
     background:#eef3fa;
     border:1px solid #c4d3e8;
@@ -292,6 +309,11 @@
     <h2><span class="arrow">→</span>THE LANES — DEFINED BY RISK, NOT BY WHO IS BUILDING</h2>
     <div class="rule"></div>
 
+    <div class="thresh">
+      <span class="q">Do I need to register what I'm building?</span>
+      <b>If it touches company data, yes.</b> Reading probably, writing definitely — at that point it is a Lane 2 app and we want it on the list. If it does not touch company data, you are in Lane 1 and there is nothing to do. Experiment away.
+    </div>
+
     <div class="cols">
 
       <!-- LANE 1 -->
@@ -317,6 +339,10 @@
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">Support</div>
             <div class="d">None. Explicitly unsupported — this one is yours.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Nothing to register</div>
+            <div class="d">No list, no form, no permission. Lane 1 stays invisible on purpose.</div>
           </div>
           <div class="step inset">
             <div class="t"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-merge" xlink:href="#i-merge"/></svg>Lane 1.5 — the on-ramp</div>
@@ -404,6 +430,8 @@
 
     <div class="note">
       <b>Lanes follow the thing, not the person.</b> A developer building a personal utility is in Lane 1. A business-unit analyst building something the company depends on is in Lane 3. What decides the lane is the data it touches, who uses it, and what breaks if it stops.
+      <br><br>
+      <b>And the point of all this is more apps, not fewer.</b> There are roughly twenty Lane 2 apps at Redmond today. If this works, there should be two hundred within a year — built by people across the business, without waiting on the development team. The lanes exist to make that safe, not to slow it down.
     </div>
   </section>
 
@@ -566,27 +594,27 @@
       </div>
 
       <div class="col">
-        <header style="background:var(--lane1)"><span class="ttl"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-open" xlink:href="#i-open"/></svg>STILL OPEN</span><small>Not yet decided</small></header>
+        <header style="background:var(--lane1)"><span class="ttl"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-open" xlink:href="#i-open"/></svg>BEING WORKED OUT</span><small>Your input shapes these</small></header>
         <div class="body">
           <div class="step" style="--accent:var(--lane1)">
-            <div class="t">Lane 3 promotion criteria</div>
-            <div class="d">Finding candidates is the objective; there is no agreed test yet for what qualifies.</div>
+            <div class="t">Who owns each data source</div>
+            <div class="d">Knowing who to ask about payroll, warehouse, or finance data — so requests have somewhere to go and answers come back quickly.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
-            <div class="t">Who owns and runs this</div>
-            <div class="d">The registry needs a maintainer and renewals need a reviewer. Open since August.</div>
+            <div class="t">What counts as sensitive</div>
+            <div class="d">Most company data should be open to anyone who works here. We are identifying the small part that genuinely needs more care.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
-            <div class="t">Does registering commit us to support?</div>
-            <div class="d">Answered in principle by the lanes, never stated as policy.</div>
+            <div class="t">What moves an app up a lane</div>
+            <div class="d">The triggers above are the current draft. We want them clear enough that you recognise the moment yourself.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
-            <div class="t">Lane 3 capacity</div>
-            <div class="d">If Lane 2 works, demand rises. Hire, consult, or hold things in Lane 2 longer?</div>
+            <div class="t">How Lane 2 gets supported</div>
+            <div class="d">Who helps when the owner is unavailable, and what that help looks like. Being defined with the teams involved.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">Is 1.5 a lane or an on-ramp?</div>
-            <div class="d">Presented here as an on-ramp within Lane 1. Not settled.</div>
+            <div class="d">Shown here as an on-ramp within Lane 1. Still under discussion.</div>
           </div>
         </div>
       </div>
@@ -594,7 +622,7 @@
     </div>
 
     <div class="note">
-      <b>Working model, not yet ratified.</b> Lane definitions, escalation triggers, and the support model are being settled in Phase 1A and put into practice in Phase 2B. Questions and corrections go to the working group.
+      <b>This is a draft, and that is deliberate.</b> The lanes, the triggers, and the support model are still being settled — partly so the people who will actually build in them get a say first. If something here would get in your way, say so now.
     </div>
   </section>
 

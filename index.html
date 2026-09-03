@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redmond — AI &amp; App Development Lane Model</title>
+<style>
+  :root{
+    --navy:#25406e;
+    --navy-dark:#1c3157;
+    --ink:#1f2733;
+    --muted:#5d6875;
+    --rule:#d4dae3;
+    --page:#eef1f5;
+    --card:#ffffff;
+
+    --lane1:#4a6b8a;
+    --lane2:#3f6b45;
+    --lane3:#9c4a2c;
+    --lane15:#6b5b95;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--ink);
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+    font-size:14px;
+    line-height:1.45;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    background:var(--navy);
+    color:#fff;
+    padding:14px 26px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .wordmark{
+    border:2px solid rgba(255,255,255,.85);
+    padding:7px 15px;
+    font-weight:700;
+    letter-spacing:.14em;
+    font-size:15px;
+    white-space:nowrap;
+  }
+  .masthead h1{
+    margin:0;
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  .masthead p{
+    margin:3px 0 0;
+    font-size:12px;
+    color:#b9c6dc;
+  }
+
+  /* ---------- legend ---------- */
+  .legend{
+    background:#fff;
+    border-bottom:1px solid var(--rule);
+    padding:9px 26px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    flex-wrap:wrap;
+    font-size:12px;
+  }
+  .legend .lbl{
+    color:var(--muted);
+    letter-spacing:.09em;
+    font-size:11px;
+    font-weight:600;
+  }
+  .legend span.key{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+  .sw{width:13px;height:13px;border-radius:2px;display:inline-block}
+
+  /* ---------- tabs ---------- */
+  .tabs{
+    background:#fff;
+    border-bottom:1px solid var(--rule);
+    padding:0 26px;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+  }
+  .tabs button{
+    appearance:none;
+    background:none;
+    border:0;
+    border-bottom:3px solid transparent;
+    padding:13px 14px;
+    font:inherit;
+    font-size:12.5px;
+    letter-spacing:.07em;
+    font-weight:600;
+    color:var(--muted);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .tabs button:hover{color:var(--navy)}
+  .tabs button[aria-selected="true"]{
+    color:var(--navy);
+    border-bottom-color:var(--navy);
+  }
+  .tabs button:focus-visible{outline:2px solid var(--navy);outline-offset:-3px}
+
+  /* ---------- panel ---------- */
+  main{padding:22px 26px 40px}
+  .panel[hidden]{display:none}
+  .panel h2{
+    margin:0 0 4px;
+    font-size:15px;
+    font-weight:600;
+    color:var(--navy);
+    letter-spacing:.04em;
+  }
+  .panel h2 .arrow{color:var(--lane2);margin-right:6px}
+  .rule{height:2px;background:var(--navy);opacity:.75;margin:8px 0 20px}
+
+  .cols{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:20px;
+    align-items:start;
+  }
+  .col{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .col > header{
+    color:#fff;
+    text-align:center;
+    padding:10px 12px;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.08em;
+  }
+  .col > header small{
+    display:block;
+    font-weight:500;
+    font-size:11px;
+    letter-spacing:.02em;
+    opacity:.9;
+    margin-top:2px;
+    text-transform:none;
+  }
+  .col .body{padding:14px;display:flex;flex-direction:column;gap:11px}
+
+  .step{
+    background:#fff;
+    border:1px solid var(--rule);
+    border-left:4px solid var(--accent,#999);
+    border-radius:3px;
+    padding:9px 12px;
+    box-shadow:0 1px 2px rgba(31,39,51,.05);
+  }
+  .step > .t{font-weight:600;font-size:13px}
+  .step > .d{
+    color:var(--muted);
+    font-style:italic;
+    font-size:12px;
+    margin-top:3px;
+  }
+  .step ul{margin:6px 0 0;padding-left:17px}
+  .step li{
+    color:var(--muted);
+    font-style:italic;
+    font-size:12px;
+    margin:2px 0;
+  }
+
+  .note{
+    background:#eef3fa;
+    border:1px solid #c4d3e8;
+    border-radius:3px;
+    padding:12px 16px;
+    margin-top:24px;
+    font-size:12.5px;
+    color:#2c3d57;
+  }
+  .note b{color:var(--navy)}
+
+  .inset{
+    border:1px dashed var(--lane15);
+    border-left:4px solid var(--lane15);
+    background:#f7f5fb;
+  }
+
+  footer.meta{
+    padding:0 26px 34px;
+    color:var(--muted);
+    font-size:11.5px;
+  }
+
+  @media (max-width:900px){
+    .cols{grid-template-columns:1fr}
+    main{padding:18px 16px 30px}
+    .masthead,.legend,.tabs{padding-left:16px;padding-right:16px}
+    footer.meta{padding-left:16px;padding-right:16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wordmark">REDMOND</div>
+  <div>
+    <h1>AI &amp; App Development Lane Model</h1>
+    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1 &nbsp;|&nbsp; September 2026</p>
+  </div>
+</div>
+
+<div class="legend">
+  <span class="lbl">LANES:</span>
+  <span class="key"><i class="sw" style="background:var(--lane1)"></i>Lane 1 — Sandbox</span>
+  <span class="key"><i class="sw" style="background:var(--lane15)"></i>Lane 1.5 — On-Ramp</span>
+  <span class="key"><i class="sw" style="background:var(--lane2)"></i>Lane 2 — Paved Road</span>
+  <span class="key"><i class="sw" style="background:var(--lane3)"></i>Lane 3 — Engineered</span>
+</div>
+
+<div class="tabs" role="tablist">
+  <button role="tab" id="t1" aria-controls="p1" aria-selected="true">THE LANES</button>
+  <button role="tab" id="t2" aria-controls="p2" aria-selected="false">MOVING BETWEEN LANES</button>
+  <button role="tab" id="t3" aria-controls="p3" aria-selected="false">SUPPORT &amp; GOVERNANCE</button>
+</div>
+
+<main>
+
+  <!-- ============ PANEL 1 ============ -->
+  <section class="panel" id="p1" role="tabpanel" aria-labelledby="t1">
+    <h2><span class="arrow">→</span>THE LANES — DEFINED BY RISK, NOT BY WHO IS BUILDING</h2>
+    <div class="rule"></div>
+
+    <div class="cols">
+
+      <!-- LANE 1 -->
+      <div class="col">
+        <header style="background:var(--lane1)">LANE 1 — SANDBOX<small>Explore freely</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Who builds</div>
+            <div class="d">Anyone. No approval, no ticket, no registration.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Data allowed</div>
+            <ul>
+              <li>Synthetic or public data only</li>
+              <li>No production data, read or write</li>
+              <li>No secrets, no production credentials</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Where it runs</div>
+            <div class="d">Pre-provisioned sandbox or local. Free tier.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Support</div>
+            <div class="d">None. Explicitly unsupported — this one is yours.</div>
+          </div>
+          <div class="step inset">
+            <div class="t">Lane 1.5 — the on-ramp</div>
+            <ul>
+              <li>Static site on a free tier, handed over instantly</li>
+              <li>Redmond-flavoured material, never real data</li>
+              <li>Guided development for someone with an idea</li>
+              <li>Needing more generates a ticket → Lane 2</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANE 2 -->
+      <div class="col">
+        <header style="background:var(--lane2)">LANE 2 — PAVED ROAD<small>Where most business-unit apps live</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Who builds</div>
+            <div class="d">Anyone building with AI tooling, inside the standards.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Data allowed</div>
+            <ul>
+              <li>Internal data through approved connectors</li>
+              <li>Role-scoped through the MCP server</li>
+              <li>Never a direct database connection</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">What registration requires</div>
+            <ul>
+              <li>Named business owner and technical steward</li>
+              <li>Environment separation and audit logging</li>
+              <li>Renewal after twelve months, or it is disabled</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Where it runs</div>
+            <div class="d">Redmond tenancy, SSO enforced, sanctioned hosting.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Support</div>
+            <div class="d">We support the platform and consult on the logic. The owner owns the app.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANE 3 -->
+      <div class="col">
+        <header style="background:var(--lane3)">LANE 3 — ENGINEERED<small>Built and owned by the dev team</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">Who builds</div>
+            <div class="d">Development team, with business experts embedded.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">What lands here</div>
+            <ul>
+              <li>Mission critical, customer facing, or financial</li>
+              <li>Time System, ROPE — a full project</li>
+              <li>Magic 8, sprints, Confluence and Jira</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">Data allowed</div>
+            <div class="d">Any data, under full controls. Direct API rather than MCP, for efficiency.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">Controls</div>
+            <ul>
+              <li>Architecture review and security sign-off</li>
+              <li>Full SDLC, disaster recovery, monitoring</li>
+              <li>Service level agreement</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">Support</div>
+            <div class="d">Fully owned and supported by the development team.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <b>Lanes follow the thing, not the person.</b> A developer building a personal utility is in Lane 1. A business-unit analyst building something the company depends on is in Lane 3. What decides the lane is the data it touches, who uses it, and what breaks if it stops.
+    </div>
+  </section>
+
+  <!-- ============ PANEL 2 ============ -->
+  <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+    <h2><span class="arrow">→</span>MOVING BETWEEN LANES — WHAT IT TAKES</h2>
+    <div class="rule"></div>
+
+    <div class="cols">
+
+      <div class="col">
+        <header style="background:var(--lane15)">LANE 1 → LANE 2<small>Ticket, approve, provision</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--lane15)">
+            <div class="t">1. You outgrow the sandbox</div>
+            <div class="d">You need a real resource or a live connector — synthetic data is no longer enough.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane15)">
+            <div class="t">2. The request makes a ticket</div>
+            <div class="d">Generated for you, not filled in by you.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane15)">
+            <div class="t">3. We approve and provision</div>
+            <ul>
+              <li>Azure resources deployed for you</li>
+              <li>Role-scoped data access granted</li>
+              <li>Registry entry created as a by-product</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane15)">
+            <div class="t">4. You now have an owner and a clock</div>
+            <div class="d">Named owner recorded, twelve-month renewal starts.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--lane2)">STAYING IN LANE 2<small>What keeps it healthy</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Keep it supportable</div>
+            <ul>
+              <li>Documentation someone else can follow</li>
+              <li>Code in a shared repository</li>
+              <li>Built to the published standards</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Ask for help early</div>
+            <div class="d">A short conversation with a developer can redirect a hundred hours of work.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Renew every twelve months</div>
+            <div class="d">Confirm it is still used and still needed, or it is disabled and loses data access.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Lane 2 is not lesser</div>
+            <div class="d">It can be a polished, well-built app. What differs is who owns it.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--lane3)">LANE 2 → LANE 3<small>Any one of these triggers it</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">The triggers</div>
+            <ul>
+              <li>More than roughly 25 users</li>
+              <li>Touches PII, PHI, PCI, or financial data</li>
+              <li>Gains external or customer-facing access</li>
+              <li>Another system depends on its output</li>
+              <li>A process halts if it stops for a day</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">It starts with an evaluation</div>
+            <div class="d">Not a rewrite. Pull the code, find the gaps against Lane 3 requirements, produce a plan.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">Then a decision</div>
+            <div class="d">Some gaps can be closed in place. Some need rebuilding. That call comes after looking, not before.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane3)">
+            <div class="t">Lane 3 is still built with AI</div>
+            <div class="d">The difference is the requirements it is built against, not the tools used.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <b>Triggers are tests you apply to yourself.</b> They are written to be objective so a builder can recognise the moment without waiting to be told. A working Lane 2 does not reduce Lane 3 demand — it increases it, because more apps become successful enough to matter.
+    </div>
+  </section>
+
+  <!-- ============ PANEL 3 ============ -->
+  <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
+    <h2><span class="arrow">→</span>SUPPORT &amp; GOVERNANCE — WHO PICKS UP WHAT</h2>
+    <div class="rule"></div>
+
+    <div class="cols">
+
+      <div class="col">
+        <header style="background:var(--lane2)">SUPPORT MODEL<small>Being defined</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">The owner</div>
+            <div class="d">Owns the logic, the business rules, and keeping it useful.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">App support</div>
+            <div class="d">User-level issues. Not level two or three.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">IT and the data team</div>
+            <div class="d">Identity, hosting, connections, and the data behind them.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">The dev team</div>
+            <ul>
+              <li>Reviews whether something is supportable</li>
+              <li>Consults on what would make it so</li>
+              <li>Helps when the owner is away, without a rewrite</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">What we do not say</div>
+            <div class="d">"We cannot look at it until it becomes a project and starts over." That answer pushes people off the road.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--navy)">GOVERNANCE IN THE DATA<small>Not in the app</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--navy)">
+            <div class="t">The principle</div>
+            <div class="d">Permissions live with the data, not with each app. A badly built app still cannot reach what it should not.</div>
+          </div>
+          <div class="step" style="--accent:var(--navy)">
+            <div class="t">How access actually works</div>
+            <div class="d">No one gets into the database. An app asks a tool, and the tool decides what comes back — name, status, work location, and nothing else.</div>
+          </div>
+          <div class="step" style="--accent:var(--navy)">
+            <div class="t">The controls</div>
+            <ul>
+              <li>Entra SSO and role-scoped endpoints</li>
+              <li>Secrets vaulted, never in generated code</li>
+              <li>Per-app identity, so revocation is surgical</li>
+              <li>Audit logging on every connection</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--navy)">
+            <div class="t">Why it matters</div>
+            <div class="d">The worst case becomes a broken app rather than a data breach.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--lane1)">STILL OPEN<small>Not yet decided</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Lane 3 promotion criteria</div>
+            <div class="d">Finding candidates is the objective; there is no agreed test yet for what qualifies.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Who owns and runs this</div>
+            <div class="d">The registry needs a maintainer and renewals need a reviewer. Open since August.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Does registering commit us to support?</div>
+            <div class="d">Answered in principle by the lanes, never stated as policy.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Lane 3 capacity</div>
+            <div class="d">If Lane 2 works, demand rises. Hire, consult, or hold things in Lane 2 longer?</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Is 1.5 a lane or an on-ramp?</div>
+            <div class="d">Presented here as an on-ramp within Lane 1. Not settled.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <b>Working model, not yet ratified.</b> Lane definitions, escalation triggers, and the support model are being settled in Phase 1A and put into practice in Phase 2B. Questions and corrections go to the working group.
+    </div>
+  </section>
+
+</main>
+
+<footer class="meta">
+  Redmond Inc. — Development Standards &amp; App Registration &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Draft for review
+</footer>
+
+<script>
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+
+  function select(tab){
+    tabs.forEach(function(t){
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      var on = (t === tab);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      panel.hidden = !on;
+    });
+  }
+
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ select(tab); });
+    tab.addEventListener('keydown', function(e){
+      var next = null;
+      if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+      if (e.key === 'ArrowLeft')  next = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (next){ e.preventDefault(); next.focus(); select(next); }
+    });
+  });
+</script>
+
+</body>
+</html>

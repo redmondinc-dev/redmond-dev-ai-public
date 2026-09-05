@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redmond — Development Standards &amp; AI Governance: Project Status</title>
+<style>
+  :root{
+    --navy:#25406e;
+    --ink:#1f2733;
+    --muted:#5d6875;
+    --rule:#d4dae3;
+    --page:#eef1f5;
+    --card:#fff;
+    --now:#3f6b45;
+    --next:#4a6b8a;
+    --later:#8a92a0;
+    --done:#6b7f6e;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--page);color:var(--ink);
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+    font-size:14px;line-height:1.45;
+  }
+  .masthead{background:var(--navy);color:#fff;padding:14px 26px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .wordmark{border:2px solid rgba(255,255,255,.85);padding:7px 15px;font-weight:700;letter-spacing:.14em;font-size:15px;white-space:nowrap}
+  .masthead h1{margin:0;font-size:20px;font-weight:600}
+  .masthead p{margin:3px 0 0;font-size:12px;color:#b9c6dc}
+
+  main{padding:22px 26px 40px;max-width:1100px}
+
+  /* summary strip */
+  .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:24px}
+  .stat{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:12px 14px}
+  .stat .k{font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:600;text-transform:uppercase}
+  .stat .v{font-size:15px;font-weight:600;margin-top:4px}
+  .stat .s{font-size:12px;color:var(--muted);margin-top:2px}
+
+  .headline{
+    background:var(--card);border:1px solid var(--rule);border-left:5px solid var(--now);
+    border-radius:3px;padding:14px 18px;margin-bottom:26px;
+  }
+  .headline .k{font-size:11px;letter-spacing:.08em;color:var(--now);font-weight:700;text-transform:uppercase}
+  .headline p{margin:6px 0 0}
+  .headline p+p{margin-top:8px}
+
+  h2.sec{font-size:13px;letter-spacing:.08em;color:var(--navy);text-transform:uppercase;margin:0 0 4px}
+  .rule{height:2px;background:var(--navy);opacity:.75;margin:6px 0 16px}
+
+  /* phase */
+  .phase{background:var(--card);border:1px solid var(--rule);border-radius:3px;margin-bottom:12px;overflow:hidden}
+  .phase>summary{
+    list-style:none;cursor:pointer;padding:13px 16px;display:flex;align-items:center;gap:12px;
+  }
+  .phase>summary::-webkit-details-marker{display:none}
+  .phase>summary:hover{background:#f7f9fc}
+  .chev{width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+        transform:rotate(-45deg);transition:transform .15s;flex:0 0 auto;margin-top:-3px}
+  .phase[open]>summary .chev{transform:rotate(45deg);margin-top:-6px}
+  .pname{font-weight:600;font-size:14.5px;flex:1 1 auto}
+  .pname small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:2px}
+
+  .pill{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+        padding:3px 9px;border-radius:11px;color:#fff;white-space:nowrap;flex:0 0 auto}
+  .p-now{background:var(--now)}
+  .p-next{background:var(--next)}
+  .p-later{background:var(--later)}
+  .p-done{background:var(--done)}
+
+  .count{font-size:12px;color:var(--muted);white-space:nowrap;flex:0 0 auto}
+
+  .pbody{padding:2px 16px 16px;border-top:1px solid var(--rule)}
+  .pbody>.why{color:var(--muted);margin:12px 0 14px}
+
+  /* story */
+  .story{border:1px solid var(--rule);border-radius:3px;margin-bottom:8px;background:#fff}
+  .story>summary{list-style:none;cursor:pointer;padding:9px 13px;display:flex;align-items:center;gap:11px}
+  .story>summary::-webkit-details-marker{display:none}
+  .story>summary:hover{background:#f7f9fc}
+  .sname{flex:1 1 auto;font-size:13.5px}
+  .key{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;color:var(--muted);flex:0 0 auto}
+  .who{font-size:12px;color:var(--muted);white-space:nowrap;flex:0 0 auto}
+  .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+  .d-prog{background:var(--now)}
+  .d-todo{background:#c3ccd8}
+  .d-done{background:var(--done)}
+  .sbody{padding:2px 13px 13px 32px;border-top:1px solid var(--rule);font-size:13px}
+  .sbody .goal{margin:11px 0 9px}
+  .sbody ul{margin:0;padding-left:18px}
+  .sbody li{margin:3px 0;color:var(--muted)}
+  .sbody .ac{font-size:11px;letter-spacing:.07em;color:var(--navy);font-weight:700;text-transform:uppercase;margin-bottom:5px}
+
+  .empty{color:var(--muted);font-style:italic;padding:4px 0 6px}
+
+  .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .links a{
+    display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:3px;
+    padding:9px 14px;text-decoration:none;color:var(--navy);font-weight:600;font-size:13px;
+  }
+  .links a:hover{border-color:var(--navy)}
+  .links a small{display:block;font-weight:400;color:var(--muted);margin-top:2px}
+
+  .open li{margin:5px 0}
+  .open b{color:var(--ink)}
+
+  footer.meta{padding:0 26px 34px;color:var(--muted);font-size:11.5px;max-width:1100px}
+
+  @media (max-width:820px){
+    .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+    main,footer.meta{padding-left:16px;padding-right:16px}
+    .masthead{padding-left:16px;padding-right:16px}
+    .who{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wordmark">REDMOND</div>
+  <div>
+    <h1>Development Standards &amp; AI Governance</h1>
+    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 4 September 2026</p>
+  </div>
+</div>
+
+<main>
+
+  <div class="strip">
+    <div class="stat"><div class="k">Phase</div><div class="v">1A &amp; 1B</div><div class="s">Running in parallel</div></div>
+    <div class="stat"><div class="k">Sponsor</div><div class="v">Aaron</div><div class="s">IT owns the project</div></div>
+    <div class="stat"><div class="k">Facilitator</div><div class="v">Kirt</div><div class="s">Weekly, Thursdays 1:00</div></div>
+    <div class="stat"><div class="k">Status</div><div class="v">Kicked off</div><div class="s">3 September 2026</div></div>
+  </div>
+
+  <div class="headline">
+    <div class="k">Where we are</div>
+    <p>The registry is built and being filled in. We are finding out what already exists across Redmond — apps, APIs, MCP servers — before deciding anything about how it should be governed.</p>
+    <p>Running alongside that, we are working out what the lanes mean in practice and answering the governance questions underneath: who owns each data source, and who decides access.</p>
+    <p><strong>Nothing changes for anyone yet.</strong> No approvals, no permissions, no new process. This phase is visibility only.</p>
+  </div>
+
+  <h2 class="sec">The plan</h2>
+  <div class="rule"></div>
+
+  <!-- 1A -->
+  <details class="phase" open>
+    <summary>
+      <i class="chev"></i>
+      <span class="pname">Phase 1A — Registry and Lane Model<small>Know what exists, and publish what each lane means</small></span>
+      <span class="count">3 of 6 done</span>
+      <span class="pill p-now">In progress</span>
+    </summary>
+    <div class="pbody">
+      <p class="why">A catalogue of anything built or used at Redmond, and the model that says what each thing is allowed to do. The registration threshold is whether something touches company data — if it does not, there is nothing to register.</p>
+
+      <details class="story">
+        <summary><i class="dot d-prog"></i><span class="sname">Seed the Registry</span><span class="who">Jeremiah</span><span class="key">DEVSTD-3</span></summary>
+        <div class="sbody">
+          <p class="goal">As the project team, I need the registry populated with what already exists so that we know what is running before we try to govern it.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Register apps, third-party APIs, APIs we build, MCP servers, and connectors</li>
+            <li>Include anything under development, partially built, or not currently in use</li>
+            <li>Capture owner, purpose, data touched, and where code and documentation live</li>
+            <li>Reference credentials by location only — none stored in the registry</li>
+            <li>Create entries from the template so the summary tables populate</li>
+            <li>Apply the registry label by hand in Confluence or the entry will not appear</li>
+            <li>Follow up with builders surfaced during seeding</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Ratify and Publish the Lane Model</span><span class="who">Kirt</span><span class="key">DEVSTD-22</span></summary>
+        <div class="sbody">
+          <p class="goal">As an employee building at Redmond, I need to know which lane my project falls into so that I understand what is expected of me without having to ask.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Settle the lane count — three, four, or merge lanes feeding into two and three</li>
+            <li>Decide whether Lane 1.5 is its own lane or an on-ramp within Lane 1</li>
+            <li>Confirm lane definitions are based on what an app needs and touches, not who built it</li>
+            <li>Publish escalation triggers as tests a builder can apply to themselves</li>
+            <li>State the registration threshold — anything touching company data</li>
+            <li>Publish in plain language where builders will find it</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Evaluate Existing Redmond Solutions</span><span class="who">Phil</span><span class="key">DEVSTD-23</span></summary>
+        <div class="sbody">
+          <p class="goal">As the project team, I need to know whether existing Redmond tooling can serve as the registry and build path so that we extend what works instead of rebuilding it.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Evaluate existing MCP servers, project starter tooling, and pre-provisioned sandboxes</li>
+            <li>Produce a written gap list against what Phase 1A requires</li>
+            <li>Recommend whether to adopt, extend, or build fresh</li>
+            <li>Decide one MCP server or separate servers for data and application development</li>
+            <li>Agree the improvement route with the solution's owner rather than assuming it</li>
+            <li>Report findings to the working group before build work starts</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-done"></i><span class="sname">Add Lane Model Fields to the Registry Template</span><span class="who">Done</span><span class="key">DEVSTD-4</span></summary>
+        <div class="sbody"><p class="goal">Lane, owner, and renewal date added to the registry entry template.</p></div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-done"></i><span class="sname">Registry Discovery Session</span><span class="who">Done</span><span class="key">DEVSTD-10</span></summary>
+        <div class="sbody"><p class="goal">Session with Jeremiah and Phil to agree the shape of the registry. Held 8/11.</p></div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-done"></i><span class="sname">Lane Assignment Guidance</span><span class="who">Folded in</span><span class="key">DEVSTD-7</span></summary>
+        <div class="sbody"><p class="goal">Merged into DEVSTD-22 — publishing the model covers the guidance.</p></div>
+      </details>
+    </div>
+  </details>
+
+  <!-- 1B -->
+  <details class="phase" open>
+    <summary>
+      <i class="chev"></i>
+      <span class="pname">Phase 1B — AI Governance Discovery<small>Understand the problem before proposing an architecture</small></span>
+      <span class="count">0 of 2 done</span>
+      <span class="pill p-now">In progress</span>
+    </summary>
+    <div class="pbody">
+      <p class="why">Runs in parallel with 1A, not after it. The instinct has been to jump to answers — restrict it in the MCP server, enforce at the data layer, buy a tool. None of that is ready to be decided, because the questions underneath are not answered.</p>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Data Source Ownership and Access Decision Rights</span><span class="who">Kirt</span><span class="key">DEVSTD-27</span></summary>
+        <div class="sbody">
+          <p class="goal">As the AI governance group, I need a named owner and decision maker for each data source so that access requests have somewhere to go.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Name an owner for each significant data source — HR and time, Paylocity, Fabric, Acumatica, warehouse</li>
+            <li>Decide whether each owner decides directly or routes to stakeholders</li>
+            <li>Document what an owner can decline alone and what escalates</li>
+            <li>Assign ownership of Acumatica roles and permissions</li>
+            <li>Confirm with each named owner that they accept the role</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Default Access Posture and the Sensitive Data Exception List</span><span class="who">Unassigned</span><span class="key">DEVSTD-28</span></summary>
+        <div class="sbody">
+          <p class="goal">As a Redmond associate, I need to know what data I can use by default so that I am not asking permission for information I should already have.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Publish the default — company data is open to associates and their AI agents</li>
+            <li>Define the sensitive exception list, starting with HR data (pay rates, birthdays) and Paylocity API access</li>
+            <li>Confirm the exception list with HR</li>
+            <li>Agree who approves an exception and who it escalates to</li>
+            <li>Document what an associate can expect without asking</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </details>
+
+  <!-- 2A -->
+  <details class="phase">
+    <summary>
+      <i class="chev"></i>
+      <span class="pname">Phase 2A — Launch the AI Governance Team<small>A standing team rather than ad hoc ownership</small></span>
+      <span class="count">Not started</span>
+      <span class="pill p-next">Next</span>
+    </summary>
+    <div class="pbody">
+      <p class="why">Discovery in 1B defines what needs governing. This phase creates the group that does it, with named people and real staffing. Twenty responsibility areas across five headings: AI strategy, governance and policy, data governance and security, enablement and adoption, and technology and risk oversight.</p>
+      <p class="empty">No stories yet — scoped once 1B discovery has shape.</p>
+    </div>
+  </details>
+
+  <!-- 2B -->
+  <details class="phase">
+    <summary>
+      <i class="chev"></i>
+      <span class="pname">Phase 2B — Lanes Established and Supported<small>Run the model in practice</small></span>
+      <span class="count">Not started</span>
+      <span class="pill p-next">Next</span>
+    </summary>
+    <div class="pbody">
+      <p class="why">A published model changes nothing on its own. Lanes get assigned to real things, support paths get named teams behind them, and the first apps actually move between lanes so we learn where it breaks. Lane 3 already works. Lane 2 is the gap — a useful tool that people depend on, with no clear answer on who picks it up when the owner is unavailable.</p>
+      <p class="empty">No stories yet — scoped once the lane model is ratified.</p>
+    </div>
+  </details>
+
+  <!-- 3 -->
+  <details class="phase">
+    <summary>
+      <i class="chev"></i>
+      <span class="pname">Phase 3 — Teams and Dev Team Standards<small>Standards for the people already building</small></span>
+      <span class="count">0 of 3 done</span>
+      <span class="pill p-later">Later</span>
+    </summary>
+    <div class="pbody">
+      <p class="why">Deliberately last. Teams integration standards building on Stuart's existing work, plus the development team's own codebase, code practice, and tech stack standards — the Lane 3 engineering standards.</p>
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Dev Team Tech Stack Recommendation</span><span class="who">—</span><span class="key">DEVSTD-5</span></summary>
+        <div class="sbody"><p class="goal">Recommended stacks for new development at Redmond.</p></div>
+      </details>
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Gateway vs. Distributed API Architecture Decision</span><span class="who">—</span><span class="key">DEVSTD-6</span></summary>
+        <div class="sbody"><p class="goal">Whether APIs run through a central gateway or stay distributed. Does not gate Phase 1.</p></div>
+      </details>
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Consolidate Teams Integration Documentation</span><span class="who">—</span><span class="key">DEVSTD-17</span></summary>
+        <div class="sbody"><p class="goal">Bring Stuart's existing Teams documentation together as the basis for the standard.</p></div>
+      </details>
+    </div>
+  </details>
+
+  <h2 class="sec" style="margin-top:28px">What is still open</h2>
+  <div class="rule"></div>
+  <ul class="open">
+    <li><b>How many lanes.</b> Three, four, or merge lanes feeding into two and three. Needs settling before the model is published.</li>
+    <li><b>Who owns and runs the registry long term.</b> It needs a maintainer and renewals need a reviewer. Raised repeatedly, not assigned.</li>
+    <li><b>Who approves a data access exception.</b> The default is settled — open, except sensitive HR data and Paylocity. The decision rights are not.</li>
+    <li><b>Acumatica roles and permissions.</b> Pending since 2019. The role structure is a base that applies almost everywhere else.</li>
+    <li><b>Timeline and budget.</b> No target date or estimate yet.</li>
+  </ul>
+
+  <h2 class="sec" style="margin-top:28px">Read more</h2>
+  <div class="rule"></div>
+  <div class="links">
+    <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/199426060">Magic 8 — Project Charter<small>Why, scope, stakeholders, success criteria</small></a>
+    <a href="./index.html">The Lane Model<small>Sandbox, paved road, engineered</small></a>
+    <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/overview">Confluence Space<small>Full documentation and meeting notes</small></a>
+    <a href="https://redmondinc.atlassian.net/jira/software/c/projects/DEVSTD/boards/1158">DEVSTD Board<small>Live epics and stories</small></a>
+  </div>
+
+</main>
+
+<footer class="meta">
+  Redmond Inc. — Development Standards &amp; App Registration &nbsp;|&nbsp; Sponsor: Aaron &nbsp;·&nbsp; Owner: IT &nbsp;·&nbsp; Facilitator: Kirt &nbsp;|&nbsp; This page is maintained by hand and reflects the board as of the date above.
+</footer>
+
+</body>
+</html>

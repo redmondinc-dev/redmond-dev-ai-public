@@ -93,6 +93,25 @@
 
   .empty{color:var(--muted);font-style:italic;padding:4px 0 6px}
 
+  /* completed items sit quietly at the bottom of a phase */
+  .donehdr{
+    font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    font-weight:700;margin:16px 0 7px;padding-top:11px;border-top:1px dashed var(--rule);
+  }
+  .story.is-done{opacity:.6;background:#fbfcfd}
+  .story.is-done .sname{text-decoration:line-through;text-decoration-thickness:1px;color:var(--muted)}
+  .story.is-done .key{text-decoration:line-through}
+
+  /* what's happening now, by track */
+  .tracks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:26px}
+  .track{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--now);border-radius:3px;padding:14px 16px}
+  .track h3{margin:0 0 3px;font-size:14.5px;font-weight:600}
+  .track .lede{color:var(--muted);font-size:12.5px;margin:0 0 10px}
+  .track ul{margin:0;padding-left:17px}
+  .track li{margin:4px 0;font-size:13px}
+  .track li span{color:var(--muted)}
+  .track .none{color:var(--muted);font-style:italic;font-size:12.5px}
+
   .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
   .links a{
     display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:3px;
@@ -108,6 +127,7 @@
 
   @media (max-width:820px){
     .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .tracks{grid-template-columns:1fr}
     main,footer.meta{padding-left:16px;padding-right:16px}
     .masthead{padding-left:16px;padding-right:16px}
     .who{display:none}
@@ -140,6 +160,29 @@
     <p><strong>Nothing changes for anyone yet.</strong> No approvals, no permissions, no new process. This phase is visibility only.</p>
   </div>
 
+  <h2 class="sec">What is happening right now</h2>
+  <div class="rule"></div>
+
+  <div class="tracks">
+    <div class="track">
+      <h3>Registry and Lane Model</h3>
+      <p class="lede">Phase 1A — know what exists, and publish what each lane means.</p>
+      <ul>
+        <li>Filling the registry with what is already out there <span>— Jeremiah</span></li>
+        <li>Settling the lane count and publishing the model <span>— Kirt</span></li>
+        <li>Checking whether existing Redmond tooling can be the foundation <span>— Phil</span></li>
+      </ul>
+    </div>
+    <div class="track">
+      <h3>AI Governance Discovery</h3>
+      <p class="lede">Phase 1B — understand the problem before proposing an architecture.</p>
+      <ul>
+        <li>Finding a named owner and decision maker for each data source <span>— Kirt</span></li>
+        <li>Confirming the default access posture and the sensitive exception list <span>— unassigned</span></li>
+      </ul>
+    </div>
+  </div>
+
   <h2 class="sec">The plan</h2>
   <div class="rule"></div>
 
@@ -148,7 +191,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1A — Registry and Lane Model<small>Know what exists, and publish what each lane means</small></span>
-      <span class="count">3 of 6 done</span>
+      <span class="count">3 open · 4 closed</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -203,18 +246,25 @@
         </div>
       </details>
 
-      <details class="story">
+      <div class="donehdr">Completed and merged</div>
+
+      <details class="story is-done">
         <summary><i class="dot d-done"></i><span class="sname">Add Lane Model Fields to the Registry Template</span><span class="who">Done</span><span class="key">DEVSTD-4</span></summary>
         <div class="sbody"><p class="goal">Lane, owner, and renewal date added to the registry entry template.</p></div>
       </details>
 
-      <details class="story">
+      <details class="story is-done">
         <summary><i class="dot d-done"></i><span class="sname">Registry Discovery Session</span><span class="who">Done</span><span class="key">DEVSTD-10</span></summary>
         <div class="sbody"><p class="goal">Session with Jeremiah and Phil to agree the shape of the registry. Held 8/11.</p></div>
       </details>
 
-      <details class="story">
-        <summary><i class="dot d-done"></i><span class="sname">Lane Assignment Guidance</span><span class="who">Folded in</span><span class="key">DEVSTD-7</span></summary>
+      <details class="story is-done">
+        <summary><i class="dot d-done"></i><span class="sname">Build the Registry</span><span class="who">Superseded</span><span class="key">DEVSTD-14</span></summary>
+        <div class="sbody"><p class="goal">Closed as superseded — the registry now exists in Confluence, so the build described here did not happen as scoped.</p></div>
+      </details>
+
+      <details class="story is-done">
+        <summary><i class="dot d-done"></i><span class="sname">Lane Assignment Guidance</span><span class="who">Merged</span><span class="key">DEVSTD-7</span></summary>
         <div class="sbody"><p class="goal">Merged into DEVSTD-22 — publishing the model covers the guidance.</p></div>
       </details>
     </div>
@@ -225,7 +275,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1B — AI Governance Discovery<small>Understand the problem before proposing an architecture</small></span>
-      <span class="count">0 of 2 done</span>
+      <span class="count">2 open</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -296,7 +346,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 3 — Teams and Dev Team Standards<small>Standards for the people already building</small></span>
-      <span class="count">0 of 3 done</span>
+      <span class="count">3 open</span>
       <span class="pill p-later">Later</span>
     </summary>
     <div class="pbody">
@@ -312,6 +362,13 @@
       <details class="story">
         <summary><i class="dot d-todo"></i><span class="sname">Consolidate Teams Integration Documentation</span><span class="who">—</span><span class="key">DEVSTD-17</span></summary>
         <div class="sbody"><p class="goal">Bring Stuart's existing Teams documentation together as the basis for the standard.</p></div>
+      </details>
+
+      <div class="donehdr">Completed and merged</div>
+
+      <details class="story is-done">
+        <summary><i class="dot d-done"></i><span class="sname">Phase 3 — Dev Team Standards (separate epic)</span><span class="who">Merged</span><span class="key">DEVSTD-12</span></summary>
+        <div class="sbody"><p class="goal">Merged into this phase on 9/2 — Teams and dev team standards are both standards for existing builders, so they sit together.</p></div>
       </details>
     </div>
   </details>

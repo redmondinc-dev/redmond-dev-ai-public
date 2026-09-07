@@ -93,6 +93,9 @@
 
   .empty{color:var(--muted);font-style:italic;padding:4px 0 6px}
 
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:0 0 14px 2px}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+
   /* completed items sit quietly at the bottom of a phase */
   .donehdr{
     font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
@@ -150,7 +153,7 @@
     <div class="stat"><div class="k">Phase</div><div class="v">1A &amp; 1B</div><div class="s">Running in parallel</div></div>
     <div class="stat"><div class="k">Sponsor</div><div class="v">Aaron</div><div class="s">IT owns the project</div></div>
     <div class="stat"><div class="k">Facilitator</div><div class="v">Kirt</div><div class="s">Weekly, Thursdays 1:00</div></div>
-    <div class="stat"><div class="k">Status</div><div class="v">Kicked off</div><div class="s">3 September 2026</div></div>
+    <div class="stat"><div class="k">Status</div><div class="v">Kicked Off / Discovery</div><div class="s">Kicked off 3 September 2026</div></div>
   </div>
 
   <div class="headline">
@@ -186,12 +189,18 @@
   <h2 class="sec">The plan</h2>
   <div class="rule"></div>
 
+  <div class="legend">
+    <span><i class="dot d-prog"></i>In development</span>
+    <span><i class="dot d-todo"></i>To do</span>
+    <span><i class="dot d-done"></i>Done, merged, or superseded</span>
+  </div>
+
   <!-- 1A -->
   <details class="phase" open>
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1A — Registry and Lane Model<small>Know what exists, and publish what each lane means</small></span>
-      <span class="count">3 open · 4 closed</span>
+      <span class="count">3 in development · 4 closed</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -215,7 +224,7 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Ratify and Publish the Lane Model</span><span class="who">Kirt</span><span class="key">DEVSTD-22</span></summary>
+        <summary><i class="dot d-prog"></i><span class="sname">Ratify and Publish the Lane Model</span><span class="who">Kirt</span><span class="key">DEVSTD-22</span></summary>
         <div class="sbody">
           <p class="goal">As an employee building at Redmond, I need to know which lane my project falls into so that I understand what is expected of me without having to ask.</p>
           <div class="ac">Acceptance criteria</div>
@@ -231,7 +240,7 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Evaluate Existing Redmond Solutions</span><span class="who">Phil</span><span class="key">DEVSTD-23</span></summary>
+        <summary><i class="dot d-prog"></i><span class="sname">Evaluate Existing Redmond Solutions</span><span class="who">Phil</span><span class="key">DEVSTD-23</span></summary>
         <div class="sbody">
           <p class="goal">As the project team, I need to know whether existing Redmond tooling can serve as the registry and build path so that we extend what works instead of rebuilding it.</p>
           <div class="ac">Acceptance criteria</div>
@@ -275,14 +284,14 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1B — AI Governance Discovery<small>Understand the problem before proposing an architecture</small></span>
-      <span class="count">2 open</span>
+      <span class="count">1 in development · 1 to do</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
       <p class="why">Runs in parallel with 1A, not after it. The instinct has been to jump to answers — restrict it in the MCP server, enforce at the data layer, buy a tool. None of that is ready to be decided, because the questions underneath are not answered.</p>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Data Source Ownership and Access Decision Rights</span><span class="who">Kirt</span><span class="key">DEVSTD-27</span></summary>
+        <summary><i class="dot d-prog"></i><span class="sname">Data Source Ownership and Access Decision Rights</span><span class="who">Kirt</span><span class="key">DEVSTD-27</span></summary>
         <div class="sbody">
           <p class="goal">As the AI governance group, I need a named owner and decision maker for each data source so that access requests have somewhere to go.</p>
           <div class="ac">Acceptance criteria</div>
@@ -346,7 +355,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 3 — Teams and Dev Team Standards<small>Standards for the people already building</small></span>
-      <span class="count">3 open</span>
+      <span class="count">3 to do</span>
       <span class="pill p-later">Later</span>
     </summary>
     <div class="pbody">

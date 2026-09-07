@@ -37,6 +37,25 @@
   .stat .v{font-size:15px;font-weight:600;margin-top:4px}
   .stat .s{font-size:12px;color:var(--muted);margin-top:2px}
 
+  .whobox{margin:-12px 0 24px}
+  .whobox>summary{
+    list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;color:var(--muted);font-weight:600;padding:4px 2px;
+  }
+  .whobox>summary::-webkit-details-marker{display:none}
+  .whobox>summary:hover{color:var(--navy)}
+  .whobox[open]>summary .chev{transform:rotate(45deg);margin-top:-6px}
+  .whogrid{
+    background:var(--card);border:1px solid var(--rule);border-radius:3px;
+    padding:6px 16px;margin-top:8px;
+  }
+  .whorow{display:flex;gap:14px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:13px}
+  .whorow:last-child{border-bottom:0}
+  .whorow .r{flex:0 0 165px;color:var(--muted);font-size:12.5px}
+  .whorow .n{flex:1 1 auto}
+  .whorow .n small{color:var(--muted);display:block;margin-top:1px;font-size:12px}
+  @media (max-width:640px){.whorow{flex-direction:column;gap:2px}.whorow .r{flex:none}}
+
   .headline{
     background:var(--card);border:1px solid var(--rule);border-left:5px solid var(--now);
     border-radius:3px;padding:14px 18px;margin-bottom:26px;
@@ -94,6 +113,27 @@
   .empty{color:var(--muted);font-style:italic;padding:4px 0 6px}
 
   .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:0 0 14px 2px}
+
+  /* who is involved — collapsed by default */
+  .people{margin:-8px 0 26px}
+  .people>summary{
+    list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;color:var(--navy);font-weight:600;padding:4px 0;
+  }
+  .people>summary::-webkit-details-marker{display:none}
+  .people>summary:hover{text-decoration:underline}
+  .people .tw{width:8px;height:8px;border-right:2px solid var(--navy);border-bottom:2px solid var(--navy);
+              transform:rotate(-45deg);transition:transform .15s;margin-top:-3px}
+  .people[open]>summary .tw{transform:rotate(45deg);margin-top:-5px}
+  .ptable{margin-top:10px;background:var(--card);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+  .ptable div.row{display:flex;gap:14px;padding:9px 15px;font-size:13px;border-top:1px solid var(--rule)}
+  .ptable div.row:first-child{border-top:0}
+  .ptable .r{flex:0 0 190px;color:var(--muted)}
+  .ptable .n{flex:1 1 auto}
+  @media (max-width:600px){
+    .ptable div.row{flex-direction:column;gap:2px}
+    .ptable .r{flex:none;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+  }
   .legend span{display:inline-flex;align-items:center;gap:7px}
 
   /* completed items sit quietly at the bottom of a phase */
@@ -156,6 +196,21 @@
     <div class="stat"><div class="k">Status</div><div class="v">Kicked Off / Discovery</div><div class="s">Kicked off 3 September 2026</div></div>
   </div>
 
+  <details class="whobox">
+    <summary><i class="chev"></i>Who is involved</summary>
+    <div class="whogrid">
+      <div class="whorow"><div class="r">Sponsor</div><div class="n">Aaron <small>CTO</small></div></div>
+      <div class="whorow"><div class="r">Project owner</div><div class="n">IT Team</div></div>
+      <div class="whorow"><div class="r">Facilitator</div><div class="n">Kirt <small>Projects team</small></div></div>
+      <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Stuart <small>IT — Teams architecture, authentication, agent and data egress. IT supports Lane 2.</small></div></div>
+      <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Jeremiah <small>Dev team leader — development practice and infrastructure. The dev team supports Lane 3.</small></div></div>
+      <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Bryan <small>Data — MCP server, data access, sandbox data</small></div></div>
+      <div class="whorow"><div class="r">Development</div><div class="n">Phil <small>AI and MCP depth; registry and harness</small></div></div>
+      <div class="whorow"><div class="r">Stakeholders</div><div class="n">Justus, HR, Data Team, Optimization Team</div></div>
+      <div class="whorow"><div class="r">Cadence</div><div class="n">Weekly, Thursdays at 1:00 <small>Broader stakeholder session roughly monthly</small></div></div>
+    </div>
+  </details>
+
   <div class="headline">
     <div class="k">Where we are</div>
     <p>The registry is built and being filled in. We are finding out what already exists across Redmond — apps, APIs, MCP servers — before deciding anything about how it should be governed.</p>
@@ -185,6 +240,19 @@
       </ul>
     </div>
   </div>
+
+  <details class="people">
+    <summary><i class="tw"></i>Who is involved</summary>
+    <div class="ptable">
+      <div class="row"><span class="r">Sponsor</span><span class="n">Aaron — CTO</span></div>
+      <div class="row"><span class="r">Project owner</span><span class="n">IT Team</span></div>
+      <div class="row"><span class="r">Facilitator</span><span class="n">Kirt</span></div>
+      <div class="row"><span class="r">Key stakeholders</span><span class="n">Stuart (IT) · Jeremiah (Dev) · Bryan (Data)</span></div>
+      <div class="row"><span class="r">Development</span><span class="n">Phil — AI and MCP</span></div>
+      <div class="row"><span class="r">Stakeholders</span><span class="n">Justus · HR · Data Team · Optimization Team</span></div>
+      <div class="row"><span class="r">Working session</span><span class="n">Weekly, Thursdays at 1:00 · broader stakeholder session monthly</span></div>
+    </div>
+  </details>
 
   <h2 class="sec">The plan</h2>
   <div class="rule"></div>
@@ -398,7 +466,7 @@
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/199426060">Magic 8 — Project Charter<small>Why, scope, stakeholders, success criteria</small></a>
     <a href="./index.html">The Lane Model<small>Sandbox, paved road, engineered</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/overview">Confluence Space<small>Full documentation and meeting notes</small></a>
-    <a href="https://redmondinc.atlassian.net/jira/software/c/projects/DEVSTD/boards/1158">DEVSTD Board<small>Live epics and stories</small></a>
+    <a href="https://redmondinc.atlassian.net/jira/software/c/projects/DEVSTD/boards/1158">DEVSTD Jira Board<small>Live epics and stories</small></a>
   </div>
 
 </main>

@@ -183,7 +183,7 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>Development Standards &amp; AI Governance</h1>
-    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 4 September 2026</p>
+    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 9 September 2026</p>
   </div>
 </div>
 
@@ -286,9 +286,10 @@
           <div class="ac">Acceptance criteria</div>
           <ul>
             <li>Settle the lane count — three, four, or merge lanes feeding into two and three</li>
-            <li>Decide whether Lane 1.5 is its own lane or an on-ramp within Lane 1</li>
+            <li>Define both merges — the identifiers, the process, and what changes hands — without them reading as extra lanes</li>
             <li>Confirm lane definitions are based on what an app needs and touches, not who built it</li>
-            <li>Publish escalation triggers as tests a builder can apply to themselves</li>
+            <li>Publish escalation identifiers as tests a builder can apply to themselves</li>
+            <li>Reconcile whether PII moves an app out of Lane 2 or is normal within it</li>
             <li>State the registration threshold — anything touching company data</li>
             <li>Publish in plain language where builders will find it</li>
           </ul>
@@ -402,6 +403,7 @@
     </summary>
     <div class="pbody">
       <p class="why">A published model changes nothing on its own. Lanes get assigned to real things, support paths get named teams behind them, and the first apps actually move between lanes so we learn where it breaks. Lane 3 already works. Lane 2 is the gap — a useful tool that people depend on, with no clear answer on who picks it up when the owner is unavailable.</p>
+      <p class="why">Added 8 September: the Lane 3 handoff also decides <b>where an app lives</b> — embedded in Teams and Dash, or standalone. That call belongs to the team that will support it, made case by case at the point of promotion. The original builder keeps a voice on user experience and can still open pull requests.</p>
       <p class="empty">No stories yet — scoped once the lane model is ratified.</p>
     </div>
   </details>
@@ -416,6 +418,7 @@
     </summary>
     <div class="pbody">
       <p class="why">Deliberately last. Teams integration standards building on Stuart's existing work, plus the development team's own codebase, code practice, and tech stack standards — the Lane 3 engineering standards.</p>
+      <p class="why">Three more added 8 September, from the associate lifecycle session. A <b>standardized Redmond API layer</b> — auth and permissions through Entra, associate information through Fabric via Graph, other systems through Fabric, and Teams interactions. A <b>notification standard</b> — one bot for Associate Experience, a general bot for Lane 2 and Lane 3 apps, and a strict rule for what earns a notification. A <b>shared UI and brand standard</b> that AI-assisted builds can apply by default. None has an owner yet.</p>
       <details class="story">
         <summary><i class="dot d-todo"></i><span class="sname">Dev Team Tech Stack Recommendation</span><span class="who">—</span><span class="key">DEVSTD-5</span></summary>
         <div class="sbody"><p class="goal">Recommended stacks for new development at Redmond.</p></div>
@@ -441,10 +444,13 @@
   <h2 class="sec" style="margin-top:28px">What is still open</h2>
   <div class="rule"></div>
   <ul class="open">
-    <li><b>How many lanes.</b> Three, four, or merge lanes feeding into two and three. Needs settling before the model is published.</li>
+    <li><b>How many lanes.</b> The working answer is three lanes and two merges — a merge is a transition, not a place. Needs settling before the model is published, along with what we call the second merge.</li>
+    <li><b>Does PII move an app out of Lane 2.</b> The published identifiers say yes; practice has treated sensitive data as normal in Lane 2. The two readings need reconciling.</li>
     <li><b>Who owns and runs the registry long term.</b> It needs a maintainer and renewals need a reviewer. Raised repeatedly, not assigned.</li>
     <li><b>Who approves a data access exception.</b> The default is settled — open, except sensitive HR data and Paylocity. The decision rights are not.</li>
     <li><b>Acumatica roles and permissions.</b> Pending since 2019. The role structure is a base that applies almost everywhere else.</li>
+    <li><b>Who builds the standardized API layer.</b> Four parts agreed in principle on 8 September, none of them assigned.</li>
+    <li><b>External and non-associate access.</b> Spouses, plus-ones, and partners get solved app by app today. Needs a standard.</li>
     <li><b>Timeline and budget.</b> No target date or estimate yet.</li>
   </ul>
 

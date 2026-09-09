@@ -284,16 +284,16 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>AI &amp; App Development Lane Model</h1>
-    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1.05 &nbsp;|&nbsp; 3 September 2026</p>
+    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1.06 &nbsp;|&nbsp; 9 September 2026</p>
   </div>
 </div>
 
 <div class="legend">
   <span class="lbl">LANES:</span>
   <span class="key"><i class="sw" style="background:var(--lane1)"></i>Lane 1 — Sandbox</span>
-  <span class="key"><i class="sw" style="background:var(--lane15)"></i>Lane 1.5 — On-Ramp</span>
   <span class="key"><i class="sw" style="background:var(--lane2)"></i>Lane 2 — Paved Road</span>
   <span class="key"><i class="sw" style="background:var(--lane3)"></i>Lane 3 — Engineered</span>
+  <span class="key"><i class="sw" style="background:var(--lane15)"></i>Merges — the transitions between them</span>
 </div>
 
 <div class="tabs" role="tablist">
@@ -345,7 +345,8 @@
             <div class="d">No list, no form, no permission. Lane 1 stays invisible on purpose.</div>
           </div>
           <div class="step inset">
-            <div class="t"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-merge" xlink:href="#i-merge"/></svg>Lane 1.5 — the on-ramp</div>
+            <div class="t"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-merge" xlink:href="#i-merge"/></svg>The on-ramp — merging into Lane 2</div>
+            <div class="d">A transition, not a lane of its own. "1.5" describes where you are in it.</div>
             <ul>
               <li>Static site on a free tier, handed over instantly</li>
               <li>Redmond-flavoured material, never real data</li>
@@ -440,10 +441,15 @@
     <h2><span class="arrow">→</span>MOVING BETWEEN LANES — WHAT IT TAKES</h2>
     <div class="rule"></div>
 
+    <div class="thresh">
+      <span class="q">Three lanes, two merges.</span>
+      <b>A merge is a transition, not a lane.</b> Half numbers like 1.5 describe where an app is in a merge, not a place it lives. Each merge works the same way: the <b>identifiers</b> that say you are merging, the <b>process</b> you go through, and what <b>changes hands</b> at the end.
+    </div>
+
     <div class="cols">
 
       <div class="col">
-        <header style="background:var(--lane15)"><span class="ttl"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-merge" xlink:href="#i-merge"/></svg>LANE 1 → LANE 2</span><small>Ticket, approve, provision</small></header>
+        <header style="background:var(--lane15)"><span class="ttl"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-merge" xlink:href="#i-merge"/></svg>MERGE — LANE 1 → LANE 2</span><small>The on-ramp: ticket, approve, provision</small></header>
         <div class="body">
           <div class="step" style="--accent:var(--lane15)">
             <div class="t">1. You outgrow the sandbox</div>
@@ -464,6 +470,10 @@
           <div class="step" style="--accent:var(--lane15)">
             <div class="t">4. You now have an owner and a clock</div>
             <div class="d">Named owner recorded, twelve-month renewal starts.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane15)">
+            <div class="t">What changes hands</div>
+            <div class="d">Nothing about ownership — you still own it. IT picks up the platform underneath.</div>
           </div>
         </div>
       </div>
@@ -495,10 +505,10 @@
       </div>
 
       <div class="col">
-        <header style="background:var(--lane3)"><span class="ttl"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-shield" xlink:href="#i-shield"/></svg>LANE 2 → LANE 3</span><small>Any one of these triggers it</small></header>
+        <header style="background:var(--lane3)"><span class="ttl"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-shield" xlink:href="#i-shield"/></svg>MERGE — LANE 2 → LANE 3</span><small>Any one of these identifiers starts it</small></header>
         <div class="body">
           <div class="step" style="--accent:var(--lane3)">
-            <div class="t">The triggers</div>
+            <div class="t">The identifiers</div>
             <ul>
               <li>More than roughly 25 users</li>
               <li>Touches PII, PHI, PCI, or financial data</li>
@@ -516,6 +526,15 @@
             <div class="d">Some gaps can be closed in place. Some need rebuilding. That call comes after looking, not before.</div>
           </div>
           <div class="step" style="--accent:var(--lane3)">
+            <div class="t">What changes hands</div>
+            <ul>
+              <li>Ownership and support move to the dev team</li>
+              <li>The dev team decides where it lives — inside Teams and Dash, or standalone</li>
+              <li>You keep a voice on how it looks and behaves</li>
+              <li>Code stays in the Redmond repo, so you can still open pull requests</li>
+            </ul>
+          </div>
+          <div class="step" style="--accent:var(--lane3)">
             <div class="t">Lane 3 is still built with AI</div>
             <div class="d">The difference is the requirements it is built against, not the tools used.</div>
           </div>
@@ -525,7 +544,7 @@
     </div>
 
     <div class="note">
-      <b>Triggers are tests you apply to yourself.</b> They are written to be objective so a builder can recognise the moment without waiting to be told. A working Lane 2 does not reduce Lane 3 demand — it increases it, because more apps become successful enough to matter.
+      <b>Identifiers are tests you apply to yourself.</b> They are written to be objective so a builder can recognise the moment without waiting to be told. A working Lane 2 does not reduce Lane 3 demand — it increases it, because more apps become successful enough to matter.
     </div>
   </section>
 
@@ -613,8 +632,12 @@
             <div class="d">Who helps when the owner is unavailable, and what that help looks like. Being defined with the teams involved.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
-            <div class="t">Is 1.5 a lane or an on-ramp?</div>
-            <div class="d">Shown here as an on-ramp within Lane 1. Still under discussion.</div>
+            <div class="t">What we call the merges</div>
+            <div class="d">The first has a name — "1.5", the on-ramp. The second does not. Both need the same shape written down without reading as extra lanes.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Does PII move an app out of Lane 2?</div>
+            <div class="d">The identifiers above say yes. Practice so far has treated sensitive data as normal in Lane 2 — it is what separates Lane 2 from Lane 1. Being reconciled.</div>
           </div>
         </div>
       </div>
@@ -633,6 +656,10 @@
   <details style="margin-top:10px">
     <summary style="cursor:pointer;color:var(--navy);font-weight:600">Version history</summary>
     <table style="border-collapse:collapse;margin-top:9px;font-size:11.5px">
+      <tr>
+        <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.06</b> &nbsp; 9 Sep 2026</td>
+        <td style="padding:3px 0;vertical-align:top">Merges framed as transitions rather than lanes — three lanes, two merges, each with identifiers, a process, and what changes hands. Lane 3 handoff now covers where an app lives and what the original builder keeps. PII question added as open.</td>
+      </tr>
       <tr>
         <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.05</b> &nbsp; 3 Sep 2026</td>
         <td style="padding:3px 0;vertical-align:top">Default access posture stated — open, except sensitive HR data and Paylocity API access.</td>

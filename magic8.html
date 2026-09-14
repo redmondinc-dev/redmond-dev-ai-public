@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redmond — The Magic 8</title>
+<style>
+  :root{
+    --navy:#25406e;
+    --ink:#1f2733;
+    --muted:#5d6875;
+    --rule:#d4dae3;
+    --page:#eef1f5;
+    --card:#fff;
+    --why:#4a6b8a;
+    --who:#6b5b95;
+    --what:#3f6b45;
+    --how:#9c4a2c;
+    --warn:#a8862c;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--page);color:var(--ink);
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+    font-size:14px;line-height:1.45;
+  }
+  .masthead{background:var(--navy);color:#fff;padding:14px 26px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .wordmark{border:2px solid rgba(255,255,255,.85);padding:7px 15px;font-weight:700;letter-spacing:.14em;font-size:15px;white-space:nowrap}
+  .masthead h1{margin:0;font-size:20px;font-weight:600}
+  .masthead p{margin:3px 0 0;font-size:12px;color:#b9c6dc}
+
+  .legend{background:#fff;border-bottom:1px solid var(--rule);padding:9px 26px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:12px}
+  .legend .lbl{color:var(--muted);letter-spacing:.09em;font-size:11px;font-weight:600}
+  .legend span.key{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+  .sw{width:13px;height:13px;border-radius:2px;display:inline-block}
+
+  .tabs{background:#fff;border-bottom:1px solid var(--rule);padding:0 26px;display:flex;gap:8px;overflow-x:auto}
+  .tabs button{appearance:none;background:none;border:0;border-bottom:3px solid transparent;padding:13px 14px;
+    font:inherit;font-size:12.5px;letter-spacing:.07em;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  .tabs button:hover{color:var(--navy)}
+  .tabs button[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--navy)}
+
+  main{padding:22px 26px 40px}
+  .panel[hidden]{display:none}
+  .panel h2{margin:0 0 4px;font-size:15px;font-weight:600;color:var(--navy);letter-spacing:.04em}
+  .panel h2 .arrow{color:var(--what);margin-right:6px}
+  .rule{height:2px;background:var(--navy);opacity:.75;margin:8px 0 18px}
+
+  .thresh{background:#fff;border:1px solid var(--rule);border-left:5px solid var(--what);border-radius:3px;
+    padding:13px 18px;margin:0 0 20px;font-size:13.5px}
+  .thresh .q{font-weight:700;display:block;margin-bottom:3px;font-size:14px}
+
+  .cols{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+  .cols > .col{flex:1 1 250px;min-width:0;background:var(--card);border:1px solid var(--rule);
+    border-radius:3px;overflow:hidden;display:flex;flex-direction:column}
+  .col > header{color:#fff;text-align:center;padding:10px 12px;font-weight:700;font-size:13px;letter-spacing:.08em}
+  .col > header small{display:block;font-weight:500;font-size:11px;letter-spacing:.02em;opacity:.9;margin-top:2px;text-transform:none}
+  .col .body{padding:14px;display:flex;flex-direction:column;gap:11px}
+
+  .step{background:#fff;border:1px solid var(--rule);border-left:4px solid var(--accent,#999);
+    border-radius:3px;padding:9px 12px;box-shadow:0 1px 2px rgba(31,39,51,.05)}
+  .step > .t{font-weight:600;font-size:13px}
+  .step > .n{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.06em}
+  .step > .d{color:var(--muted);font-style:italic;font-size:12px;margin-top:3px}
+  .step ul{margin:6px 0 0;padding-left:17px}
+  .step li{color:var(--muted);font-style:italic;font-size:12px;margin:2px 0}
+
+  .note{background:#eef3fa;border:1px solid #c4d3e8;border-radius:3px;padding:12px 16px;margin-top:22px;
+    font-size:12.5px;color:#2c3d57}
+  .note b{color:var(--navy)}
+
+  .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .links a{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:3px;
+    padding:9px 14px;text-decoration:none;color:var(--navy);font-weight:600;font-size:13px}
+  .links a:hover{border-color:var(--navy)}
+  .links a small{display:block;font-weight:400;color:var(--muted);margin-top:2px}
+
+  footer.meta{padding:0 26px 34px;color:var(--muted);font-size:11.5px}
+
+  @media (max-width:760px){
+    main,footer.meta,.masthead,.legend,.tabs{padding-left:16px;padding-right:16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wordmark">REDMOND</div>
+  <div>
+    <h1>The Magic 8</h1>
+    <p>Eight standards for running a winning project &nbsp;|&nbsp; Why · Who · What · How</p>
+  </div>
+</div>
+
+<div class="legend">
+  <span class="lbl">GROUPED BY:</span>
+  <span class="key"><i class="sw" style="background:var(--why)"></i>Why</span>
+  <span class="key"><i class="sw" style="background:var(--who)"></i>Who</span>
+  <span class="key"><i class="sw" style="background:var(--what)"></i>What</span>
+  <span class="key"><i class="sw" style="background:var(--how)"></i>How</span>
+</div>
+
+<div class="tabs" role="tablist">
+  <button role="tab" id="t1" aria-controls="p1" aria-selected="true">THE EIGHT STANDARDS</button>
+  <button role="tab" id="t2" aria-controls="p2" aria-selected="false">THE ROLES</button>
+  <button role="tab" id="t3" aria-controls="p3" aria-selected="false">WHERE IT GOES WRONG</button>
+</div>
+
+<main>
+
+  <!-- ===== PANEL 1 ===== -->
+  <section class="panel" id="p1" role="tabpanel" aria-labelledby="t1">
+    <h2><span class="arrow">→</span>THE MAGIC 8 — EIGHT THINGS EVERY PROJECT HAS TO ANSWER</h2>
+    <div class="rule"></div>
+
+    <div class="thresh">
+      <span class="q">What is a Magic 8?</span>
+      It is the project charter — a single page that answers eight questions before work starts. Not paperwork for its own sake: if you cannot answer all eight, the project is not ready, and that is worth knowing early. It stays a living document, revised as things change rather than written once and filed.
+    </div>
+
+    <div class="cols">
+
+      <div class="col">
+        <header style="background:var(--why)">WHY<small>What problem are we solving?</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--why)">
+            <div class="n">1</div>
+            <div class="t">Why — Project Purpose</div>
+            <div class="d">The business problem. If this is vague, everything downstream is guesswork.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--who)">WHO<small>Four of the eight are people</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--who)">
+            <div class="n">2</div>
+            <div class="t">Sponsor</div>
+            <div class="d">Who wants this done.</div>
+          </div>
+          <div class="step" style="--accent:var(--who)">
+            <div class="n">3</div>
+            <div class="t">Stakeholders</div>
+            <div class="d">Who is affected by it.</div>
+          </div>
+          <div class="step" style="--accent:var(--who)">
+            <div class="n">4</div>
+            <div class="t">Facilitator</div>
+            <div class="d">Who facilitates the project. Some charters call this the Coordinator — same standard, either word.</div>
+          </div>
+          <div class="step" style="--accent:var(--who)">
+            <div class="n">5</div>
+            <div class="t">Support</div>
+            <div class="d">Who supports it after it is built.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--what)">WHAT<small>How do we know we are done?</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--what)">
+            <div class="n">6</div>
+            <div class="t">Scope</div>
+            <div class="d">What is in, what is out, and what finished looks like.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--how)">HOW<small>What it takes</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--how)">
+            <div class="n">7</div>
+            <div class="t">Cost</div>
+            <div class="d">Resources needed — labour and expenses.</div>
+          </div>
+          <div class="step" style="--accent:var(--how)">
+            <div class="n">8</div>
+            <div class="t">Time</div>
+            <div class="d">Start date and end date.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <b>Four of the eight are about people.</b> That is not an accident. Most projects do not fail on scope or cost — they fail because nobody knew who decided, who was affected, or who would keep it running afterwards. <b>Support is the one most often left blank</b>, and it is the one that determines whether anything you build survives its first year.
+    </div>
+  </section>
+
+  <!-- ===== PANEL 2 ===== -->
+  <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+    <h2><span class="arrow">→</span>THE ROLES — WHO DOES WHAT ON A PROJECT</h2>
+    <div class="rule"></div>
+
+    <div class="thresh">
+      <span class="q">Three things every project must do</span>
+      <b>Collaborate</b> to discover the best answer, <b>build</b> it, and <b>support</b> it. The Magic 8 is how you describe a project. The four roles are how you run one.
+      <br><br>
+      <b>Stakeholders sit at the centre.</b> Sponsor, Scout/Facilitator, and Support ring around them. The people affected by the work are the point of it — the other three roles exist to serve that centre, not the other way round.
+    </div>
+
+    <div class="cols">
+
+      <div class="col">
+        <header style="background:var(--who)">PROJECT SCOUT<small>Mostly Why, Who and What</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--who)">
+            <div class="t">Curious, seeks understanding</div>
+            <div class="d">The job is to understand the problem, not to arrive with the answer.</div>
+          </div>
+          <div class="step" style="--accent:var(--who)">
+            <div class="t">Creates conditions for collaboration</div>
+            <div class="d">Third alternatives and synergy — the answer nobody walked in with.</div>
+          </div>
+          <div class="step" style="--accent:var(--who)">
+            <div class="t">Works with stakeholders and sponsor</div>
+            <div class="d">Alongside discovery specialists who know the detail.</div>
+          </div>
+          <div class="step" style="--accent:var(--who)">
+            <div class="t">Identifies the Magic 8</div>
+            <div class="d">Primarily the Why, the Who, and the What.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--what)">PROJECT FACILITATOR<small>Mostly What and How</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--what)">
+            <div class="t">Picks up as the sponsor approves</div>
+            <div class="d">Works closely with the Scout through the handover.</div>
+          </div>
+          <div class="step" style="--accent:var(--what)">
+            <div class="t">Runs kickoff, meetings, and closing</div>
+            <div class="d">The rhythm of the project.</div>
+          </div>
+          <div class="step" style="--accent:var(--what)">
+            <div class="t">Drives communication</div>
+            <div class="d">Schedules, requirements, milestones, and training — to everyone involved.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--why)">PROJECT SPONSOR<small>The key to project success</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--why)">
+            <div class="t">Project advocate</div>
+            <div class="d">Communicates the Why to the business.</div>
+          </div>
+          <div class="step" style="--accent:var(--why)">
+            <div class="t">Guidance and direction</div>
+            <div class="d">Keeps the project aligned with business goals.</div>
+          </div>
+          <div class="step" style="--accent:var(--why)">
+            <div class="t">Resources</div>
+            <div class="d">Helps keep the project on track with the team it needs.</div>
+          </div>
+          <div class="step" style="--accent:var(--why)">
+            <div class="t">Stakeholder communication</div>
+            <div class="d">Helps stakeholders collaborate, and resolves conflicts between them.</div>
+          </div>
+          <div class="step" style="--accent:var(--why)">
+            <div class="t">Support the project process</div>
+            <div class="d">Give the project the best chance of success by following the eight-step process.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--how)">SUPPORT<small>After it is built</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--how)">
+            <div class="t">Named before the build, not after</div>
+            <div class="d">Support is one of the eight standards, answered up front.</div>
+          </div>
+          <div class="step" style="--accent:var(--how)">
+            <div class="t">Involved early enough to shape it</div>
+            <div class="d">The people who will keep it running should have a say in how it is built.</div>
+          </div>
+          <div class="step" style="--accent:var(--how)">
+            <div class="t">Understands what supporting it takes</div>
+            <div class="d">Documentation, access, and the capacity to actually do it.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--navy)">STAKEHOLDERS<small>At the centre of all of it</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--navy)">
+            <div class="t">The people affected by the work</div>
+            <div class="d">Not a supporting role — the reason the project exists.</div>
+          </div>
+          <div class="step" style="--accent:var(--navy)">
+            <div class="t">Bring the problem, not the solution</div>
+            <div class="d">The Scout's job is to understand it; arriving with a fixed answer closes that down.</div>
+          </div>
+          <div class="step" style="--accent:var(--navy)">
+            <div class="t">Look past your own team</div>
+            <div class="d">The best answer often serves several teams at once.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <b>Scout and Facilitator are a relay, not a handoff.</b> The Scout owns the front half — understanding the problem and shaping the Why, Who and What. The Facilitator owns the back half — the What and How, and the running of it. They overlap deliberately around the point the sponsor approves, so nothing is dropped between them.
+    </div>
+  </section>
+
+  <!-- ===== PANEL 3 ===== -->
+  <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
+    <h2><span class="arrow">→</span>WHERE IT GOES WRONG — HOW TO SPOT IT IN YOURSELF</h2>
+    <div class="rule"></div>
+
+    <div class="thresh">
+      <span class="q">Every role has a way of drifting</span>
+      These are the common failures, written down so they can be named early. Recognising your own is the point — none of these is unusual, and all of them are recoverable if someone says so out loud.
+    </div>
+
+    <div class="cols">
+
+      <div class="col">
+        <header style="background:var(--who)">SCOUT<small>Drifts toward answers</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--warn)"><div class="t">Jumping to solutions too quickly</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Not asking enough questions</div><div class="d">Making assumptions instead.</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Getting boxed into a single story</div><div class="d">One person's version of the problem becomes the whole picture.</div></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--what)">FACILITATOR<small>Drifts toward ownership</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--warn)"><div class="t">Thinking it is "their" project</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Becoming a bottleneck</div><div class="d">Everything routing through one person slows collaboration rather than enabling it.</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Failing to create space for synergy</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Thinking the goal is to finish</div><div class="d">Completing the wrong project is not success.</div></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--why)">SPONSOR<small>Drifts toward control</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--warn)"><div class="t">Feeling they own the project</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Not staying actively engaged</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Not open to third alternatives</div><div class="d">Arriving with the solution already decided.</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Wanting to rush</div><div class="d">"Give me the solution now."</div></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <header style="background:var(--how)">STAKEHOLDER &amp; SUPPORT<small>Drift toward narrowness and lateness</small></header>
+        <div class="body">
+          <div class="step" style="--accent:var(--warn)"><div class="t">Stakeholder — narrow focus</div><div class="d">Own issue only, ignoring the benefit to other teams.</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Stakeholder — protective of the problem</div><div class="d">"Don't move my cheese."</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Support — coming in too late</div><div class="d">Treated as an afterthought rather than one of the eight.</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Support — feedback too late to matter</div></div>
+          <div class="step" style="--accent:var(--warn)"><div class="t">Support — not understanding what it takes</div><div class="d">Agreeing to support something without knowing the cost of doing so.</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <b>Two of these show up on nearly every project:</b> rushing the process, and treating support as an afterthought. They are related. Rushing is what skips the support conversation, and skipping it is what leaves something running with nobody behind it a year later.
+    </div>
+
+    <div class="links">
+      <a href="https://redmondinc.atlassian.net/wiki/spaces/PROJTEAM/pages/157384707/Redmond+Project+Process">Redmond Project Process<small>The full guide this page is drawn from</small></a>
+      <a href="https://redmondinc.atlassian.net/wiki/spaces/PROJTEAM/pages/160923650/Project+Scout+Role">Project Scout Role<small>Deeper on the Scout specifically</small></a>
+      <a href="./index.html">The Lane Model<small>Sandbox, paved road, engineered</small></a>
+      <a href="./project.html">Project Status<small>Development standards and AI governance</small></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="meta">
+  Redmond Inc. — The Magic 8 &nbsp;|&nbsp; Drawn from the Redmond Project Process deck and Confluence guide &nbsp;|&nbsp; A Magic 8 is a living document: revise it as the project changes.
+</footer>
+
+<script>
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(tab){
+    tabs.forEach(function(t){
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      var on = (t === tab);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      panel.hidden = !on;
+    });
+  }
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ select(tab); });
+    tab.addEventListener('keydown', function(e){
+      var next = null;
+      if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+      if (e.key === 'ArrowLeft')  next = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (next){ e.preventDefault(); next.focus(); select(next); }
+    });
+  });
+</script>
+
+</body>
+</html>

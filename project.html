@@ -193,7 +193,7 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>Development Standards &amp; AI Governance</h1>
-    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 14 September 2026</p>
+    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 17 September 2026</p>
   </div>
 </div>
 
@@ -227,10 +227,10 @@
 
   <div class="own">
     <div class="ohead">Agreed 10 September — responsibilities sit where the lane already is</div>
-    <div class="orow"><div class="w">Data Team</div><div class="d">All data — databases, data sources, APIs including Paylocity, permissions, performance, and monitoring access. Need a database or a data source? Go here.</div></div>
-    <div class="orow"><div class="w">IT Team</div><div class="d">Security, roles, permissions, licences, and application servers. Need access or a role? Go here.</div></div>
+    <div class="orow"><div class="w">Data Team</div><div class="d">All data — databases, data sources, APIs including Paylocity, permissions, and monitoring access. Also performance, architecture, indexing, and any cloud-hosted data source. Need a database or a data source? Go here.</div></div>
+    <div class="orow"><div class="w">IT Team</div><div class="d">Security, roles, permissions, licences, application servers, and DNS security. Need access or a role? Go here.</div></div>
     <div class="orow"><div class="w">App Team</div><div class="d">Third-party applications such as Acumatica.</div></div>
-    <div class="orow"><div class="w">Development Team</div><div class="d">Code, and the registry — routing a broken app to whoever can fix it, and running the annual review.</div></div>
+    <div class="orow"><div class="w">Development Team</div><div class="d">Code and application code review, and the registry — routing a broken app to whoever can fix it, and running the annual review.</div></div>
     <div class="orow"><div class="w">You, the builder</div><div class="d">Your own app through Lanes 1 and 2, including first-line support for the app itself.</div></div>
     <div class="foot"><strong>The data team owns the process, not the data.</strong> A request comes to them, they check with the actual owner, and then grant — one front door instead of four hundred.</div>
   </div>
@@ -242,7 +242,7 @@
     <div class="k">Where we are</div>
     <p>The registry is built and being filled in. We are finding out what already exists across Redmond — apps, APIs, MCP servers — before deciding anything about how it should be governed.</p>
     <p>Running alongside that, we are working out what the lanes mean in practice and answering the governance questions underneath: who owns each data source, and who decides access.</p>
-    <p><strong>The audit is bigger than we thought.</strong> Bryan alone has around 110 apps — ten times his own earlier estimate — and there are 56 repositories in the GitHub organization being pulled in for analysis.</p>
+    <p><strong>The registry is substantial and still growing.</strong> 122 entries so far — 50 applications, 48 third-party APIs, 17 Redmond-built APIs, and 7 MCP servers and connectors. <strong>108 are Lane 2 against 13 Lane 3</strong>, roughly eight to one. Several people's work is still to come, plus 56 repositories in the GitHub organization.</p>
     <p><strong>Nothing changes for anyone yet.</strong> No approvals, no permissions, no new process. This phase is visibility only.</p>
   </div>
 
@@ -251,7 +251,7 @@
       <h3>Registry and Lane Model</h3>
       <p class="lede">Phase 1A — know what exists, and publish what each lane means.</p>
       <ul>
-        <li>Filling the registry with what is already out there <span>— Jeremiah</span></li>
+        <li>Filling the registry — 122 entries in, data sources still to add <span>— Jeremiah</span></li>
         <li>Settling the lane count and publishing the model <span>— Kirt</span></li>
         <li>Checking whether existing Redmond tooling can be the foundation <span>— Phil</span></li>
       </ul>
@@ -261,8 +261,10 @@
       <p class="lede">Phase 1B — understand the problem before proposing an architecture.</p>
       <ul>
         <li>Finding a named owner and decision maker for each data source <span>— Kirt</span></li>
-        <li>Confirming the default access posture and the sensitive exception list <span>— unassigned</span></li>
-        <li>Ranking security priorities so the harness builds the right gates first <span>— unassigned</span></li>
+        <li>Confirming the default access posture and the sensitive exception list <span>— Kirt</span></li>
+        <li>Ranking security priorities so the harness builds the right gates first <span>— Jeremiah</span></li>
+        <li>Defining a data classification scheme so access follows the data <span>— Bryan</span></li>
+        <li>Assessing SharePoint and file storage, where most company data sits <span>— Stuart</span></li>
       </ul>
     </div>
   </div>
@@ -281,7 +283,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1A — Registry and Lane Model<small>Know what exists, and publish what each lane means</small></span>
-      <span class="count">3 in progress · 4 closed</span>
+      <span class="count">3 in progress · 1 to do · 4 closed</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -337,6 +339,21 @@
         </div>
       </details>
 
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Move the Registry to Its Final Home</span><span class="who">Bryan</span><span class="key">DEVSTD-34</span></summary>
+        <div class="sbody">
+          <p class="goal">As the project team, I need the registry in a database rather than Confluence so that entries can carry tracked fields and an agent can work with them.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Columns defined from what seeding actually produced</li>
+            <li>Tracked fields added — last checked, issues found</li>
+            <li>Migrated to the projects site</li>
+            <li>Runs after seeding and the data component are complete, so the migration starts from clean data</li>
+            <li>Confluence retired as the working surface once the move is done</li>
+          </ul>
+        </div>
+      </details>
+
       <div class="donehdr">Completed and merged</div>
 
       <details class="story is-done">
@@ -366,7 +383,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1B — AI Governance Discovery<small>Understand the problem before proposing an architecture</small></span>
-      <span class="count">1 in progress · 2 to do</span>
+      <span class="count">1 in progress · 4 to do</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -388,7 +405,7 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Default Access Posture and the Sensitive Data Exception List</span><span class="who">Unassigned</span><span class="key">DEVSTD-28</span></summary>
+        <summary><i class="dot d-todo"></i><span class="sname">Default Access Posture and the Sensitive Data Exception List</span><span class="who">Kirt</span><span class="key">DEVSTD-28</span></summary>
         <div class="sbody">
           <p class="goal">As a Redmond associate, I need to know what data I can use by default so that I am not asking permission for information I should already have.</p>
           <div class="ac">Acceptance criteria</div>
@@ -403,7 +420,7 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Rank Security Priorities for the Harness</span><span class="who">Unassigned</span><span class="key">DEVSTD-30</span></summary>
+        <summary><i class="dot d-todo"></i><span class="sname">Rank Security Priorities for the Harness</span><span class="who">Jeremiah</span><span class="key">DEVSTD-30</span></summary>
         <div class="sbody">
           <p class="goal">As the development team, I need to know which security checks matter most so that we build the highest-value gates into the harness first.</p>
           <div class="ac">Acceptance criteria</div>
@@ -411,6 +428,36 @@
             <li>Security priorities ranked by where the fallout would be worst if something went wrong</li>
             <li>Top priorities identified as the first harness checks to build</li>
             <li>Runs after the registry audit, so the ranking reflects what we actually have</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Define the Data Classification Scheme</span><span class="who">Bryan</span><span class="key">DEVSTD-35</span></summary>
+        <div class="sbody">
+          <p class="goal">As a data owner, I need a classification scheme so that access decisions follow the data rather than the requester.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Default classification set per database, with a PII tag</li>
+            <li>Granularity at column level where it matters</li>
+            <li>Accounts for data protected by law regardless of how sensitive it feels</li>
+            <li>Deliberately small — classification carries a permanent maintenance cost and gets applied wrongly when overbuilt</li>
+            <li>Names who applies a classification and who maintains it</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Assess SharePoint and File Storage Governance</span><span class="who">Stuart</span><span class="key">DEVSTD-36</span></summary>
+        <div class="sbody">
+          <p class="goal">As the AI governance group, I need to understand how file storage is governed so that our work covers where most company data actually sits.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Assess what an agent connected to a user account can reach through SharePoint and file shares</li>
+            <li>Evaluate Purview for content classification and live audit of sensitive material leaving the company</li>
+            <li>Confirm current external sharing limits and whether they are sufficient</li>
+            <li>Identify who owns file storage governance</li>
+            <li>Recognize this predates AI — a spreadsheet on a local machine has never been secure; AI widens the reach</li>
           </ul>
         </div>
       </details>
@@ -436,7 +483,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 2B — Lanes Established and Supported<small>Run the model in practice</small></span>
-      <span class="count">3 to do</span>
+      <span class="count">4 to do</span>
       <span class="pill p-next">Next</span>
     </summary>
     <div class="pbody">
@@ -459,7 +506,7 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Verify SSO Setup on Lane 2 Apps</span><span class="who">Unassigned</span><span class="key">DEVSTD-31</span></summary>
+        <summary><i class="dot d-todo"></i><span class="sname">Verify SSO Setup on Lane 2 Apps</span><span class="who">Stuart</span><span class="key">DEVSTD-31</span></summary>
         <div class="sbody">
           <p class="goal">As IT, I need to confirm a Lane 2 app has set up SSO correctly so that access control actually works rather than only appearing to.</p>
           <div class="ac">Acceptance criteria</div>
@@ -473,7 +520,7 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Define the Forward-Deployed Engineer Role</span><span class="who">Unassigned</span><span class="key">DEVSTD-32</span></summary>
+        <summary><i class="dot d-todo"></i><span class="sname">Define the Forward-Deployed Engineer Role</span><span class="who">Jeremiah</span><span class="key">DEVSTD-32</span></summary>
         <div class="sbody">
           <p class="goal">As the development team, I need the forward-deployed engineer role defined so that we can staff the support layer Lane 2 needs.</p>
           <div class="ac">Acceptance criteria</div>
@@ -482,6 +529,21 @@
             <li>Define how they drive the Lane 2 to Lane 3 decision, including when to route to the projects team</li>
             <li>Set the skills profile — open to new ideas, strong on support and customer service</li>
             <li>Estimate how many are needed and where they report</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Automate Registration Through the Harness</span><span class="who">Phil</span><span class="key">DEVSTD-33</span></summary>
+        <div class="sbody">
+          <p class="goal">As a builder, I need registration to happen as part of starting a project so that nobody has to remember to do it later.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Hooks and skills fire at defined points during an AI-assisted build</li>
+            <li>Requesting an app raises a ticket for resources; approval provisions the repo and hosting</li>
+            <li>The registry entry is created automatically at that point</li>
+            <li>Optional from Lane 1, required to reach Lane 2</li>
+            <li>Registration keeps working for new apps without anyone chasing people</li>
           </ul>
         </div>
       </details>
@@ -526,7 +588,10 @@
   <ul class="open">
     <li><b>How many lanes.</b> The working answer is three lanes and two merges — a merge is a transition, not a place. Needs settling before the model is published, along with what we call the second merge.</li>
     <li><b>Does PII move an app out of Lane 2.</b> The published identifiers say yes; practice has treated sensitive data as normal in Lane 2. The two readings need reconciling.</li>
-    <li><b>Lane 2 has no review gates today.</b> An AI review on merge is the leading proposal, built into the harness.</li>
+    <li><b>How much review a Lane 2 app warrants.</b> An AI review on merge is the leading proposal. The position landed on: start without mandatory review on every change and turn it on if problems appear.</li>
+    <li><b>Is Lane 2 too broad?</b> Possible sub-variants — an app showing you only your own data versus one using application-level credentials where anyone sees everything.</li>
+    <li><b>Sustaining registration.</b> The harness is the answer, but it does not exist yet. Until it does, new apps get in by asking.</li>
+    <li><b>MCP architecture.</b> One server scoped by Entra roles, several specialised servers, or a gateway that resolves roles first.</li>
     <li><b>Nobody is assigned to ask the security questions.</b> Agreed it is everyone's concern, which currently means it is no one's job.</li>
     <li><b>Who provisions and pays for cloud resources.</b> Shared ad hoc between IT and dev today. Forgotten, still-billing resources are the named risk.</li>
     <li><b>Who approves a data access exception.</b> The default is settled — open, except sensitive HR data and Paylocity. The decision rights are not.</li>

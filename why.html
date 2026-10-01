@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redmond — Software Has Left the Dev Team</title>
+<style>
+  :root{
+    --navy:#25406e;
+    --navy-dark:#1c3157;
+    --ink:#1f2733;
+    --muted:#5d6875;
+    --rule:#d4dae3;
+    --page:#eef1f5;
+    --card:#ffffff;
+
+    --lane1:#4a6b8a;
+    --lane2:#3f6b45;
+    --lane3:#9c4a2c;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--ink);
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    background:var(--navy);
+    color:#fff;
+    padding:14px 26px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .wordmark{
+    border:2px solid rgba(255,255,255,.85);
+    padding:7px 15px;
+    font-weight:700;
+    letter-spacing:.14em;
+    font-size:15px;
+    white-space:nowrap;
+  }
+  .masthead h1{margin:0;font-size:20px;font-weight:600}
+  .masthead p{margin:3px 0 0;font-size:12px;color:#b9c6dc}
+
+  main{max-width:1000px;margin:0 auto;padding:0 26px 64px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--navy-dark);
+    color:#fff;
+    margin:0 -26px 34px;
+    padding:46px 26px 44px;
+  }
+  .hero .eyebrow{
+    margin:0 0 14px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:#93a9cc;
+  }
+  .hero h2{
+    margin:0 0 18px;
+    font-size:40px;
+    line-height:1.12;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  .hero p{margin:0;font-size:19px;line-height:1.5;color:#cfd9ea;max-width:760px}
+  .hero strong{color:#fff}
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 40px}
+  h3{
+    margin:0 0 6px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--navy);
+  }
+  h4{
+    margin:0 0 14px;
+    font-size:27px;
+    line-height:1.2;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  p.lede{font-size:18px;line-height:1.55;color:var(--ink);margin:0 0 16px;max-width:820px}
+  p{max-width:820px}
+  .muted{color:var(--muted)}
+
+  /* ---------- numbers ---------- */
+  .figs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin:0 0 20px;
+  }
+  .figs > .fig{flex:1 1 220px;min-width:0}
+  @supports (display:grid){
+    .figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+  }
+  .fig{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-top:4px solid var(--navy);
+    border-radius:4px;
+    padding:20px 22px;
+  }
+  .fig .n{
+    display:block;
+    font-size:44px;
+    line-height:1;
+    font-weight:700;
+    color:var(--navy);
+    letter-spacing:-.02em;
+  }
+  .fig .t{display:block;margin-top:8px;font-size:15px;color:var(--muted)}
+
+  /* ---------- lanes ---------- */
+  .cols{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+  .cols > .col{flex:1 1 260px;min-width:0}
+  @supports (display:grid){
+    .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+  }
+  .col{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .col header{
+    padding:14px 18px;
+    color:#fff;
+  }
+  .col header .k{
+    display:block;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    opacity:.85;
+  }
+  .col header .nm{display:block;font-size:20px;font-weight:700;margin-top:3px}
+  .l1 header{background:var(--lane1)}
+  .l2 header{background:var(--lane2)}
+  .l3 header{background:var(--lane3)}
+  .col .body{padding:16px 18px 18px}
+  .col .body p{margin:0 0 12px;font-size:15px}
+  .col dl{margin:0;font-size:14px}
+  .col dt{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:10px;
+  }
+  .col dd{margin:2px 0 0}
+
+  /* ---------- callout ---------- */
+  .callout{
+    background:#fff;
+    border:1px solid var(--rule);
+    border-left:5px solid var(--navy);
+    border-radius:4px;
+    padding:20px 24px;
+    margin:0 0 20px;
+  }
+  .callout p{margin:0;font-size:18px;line-height:1.5}
+  .callout p + p{margin-top:12px}
+
+  /* ---------- team ---------- */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border:1px solid var(--rule);
+    font-size:15px;
+  }
+  caption{text-align:left;font-size:14px;color:var(--muted);padding:0 0 8px}
+  th,td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--rule)}
+  thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:12px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+  tbody th{font-weight:600;width:42%}
+
+  ul.plain{margin:0 0 16px;padding-left:22px;max-width:820px}
+  ul.plain li{margin:0 0 8px;font-size:17px}
+
+  /* ---------- downloads ---------- */
+  .dls{display:flex;flex-wrap:wrap;gap:16px;align-items:stretch}
+  .dls > .dl{flex:1 1 300px;min-width:0}
+  @supports (display:grid){
+    .dls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+  }
+  a.dl{
+    display:block;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-left:5px solid var(--navy);
+    border-radius:4px;
+    padding:20px 24px;
+    text-decoration:none;
+    color:inherit;
+  }
+  a.dl:hover{border-color:var(--navy);background:#fafbfd}
+  a.dl:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+  a.dl .nm{
+    display:block;
+    font-size:19px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:5px;
+  }
+  a.dl .meta{display:block;font-size:14px;color:var(--muted)}
+  a.dl .desc{display:block;font-size:15px;color:var(--ink);margin-top:8px}
+
+  footer{
+    border-top:1px solid var(--rule);
+    padding:20px 26px 40px;
+    color:var(--muted);
+    font-size:13px;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  footer p{margin:0 0 4px;max-width:none}
+
+  @media (max-width:640px){
+    .hero h2{font-size:30px}
+    .hero p{font-size:17px}
+    h4{font-size:22px}
+    .fig .n{font-size:36px}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="wordmark">REDMOND</span>
+  <div>
+    <h1>Software Has Left the Dev Team</h1>
+    <p>A short briefing on what is already happening, and what we are doing about it</p>
+  </div>
+</div>
+
+<main>
+
+  <div class="hero">
+    <p class="eyebrow">The why</p>
+    <h2>This is not something coming.<br>It already happened.</h2>
+    <p>People across Redmond are building working software today &mdash; without the development team, without a budget line, and in many cases without telling anyone. AI removed the hard part of getting started. <strong>The next hundred apps will not be built by developers.</strong></p>
+  </div>
+
+  <section>
+    <h3>What we found</h3>
+    <h4>We thought there were ten or twenty. There are more than a hundred.</h4>
+    <div class="figs">
+      <div class="fig"><span class="n">122</span><span class="t">apps, integrations, APIs and services in the registry today</span></div>
+      <div class="fig"><span class="n">13</span><span class="t">of those are truly mission critical &mdash; the rest are not</span></div>
+      <div class="fig"><span class="n">1</span><span class="t">development team, which did not build most of them</span></div>
+    </div>
+    <p class="lede">None of that is a problem by itself. Most of these are useful, and the people who built them solved a real problem faster than we could have. The problem is that we had no way of knowing what existed, what it touched, or who would fix it when it broke.</p>
+  </section>
+
+  <section>
+    <h3>What it means</h3>
+    <h4>Two things are true at once</h4>
+    <div class="callout">
+      <p><strong>Freedom is the point.</strong> People should be able to try things without asking permission. That is how most of these got built, and we do not want to slow it down.</p>
+      <p><strong>Some of it has to be dependable.</strong> When something breaks at two in the morning and the company runs on it, somebody has to be on the hook for it. That cannot be an individual and a side project.</p>
+    </div>
+    <p class="lede">So the question is not <em>should people build</em>. They already are. The question is how we tell the difference between the two &mdash; without putting a gate in front of everything.</p>
+  </section>
+
+  <section>
+    <h3>The answer</h3>
+    <h4>Three lanes</h4>
+    <p class="lede">Every app sits in one of three lanes. The lane is decided by what the app <strong>needs and touches</strong> &mdash; not by who built it, and not by how important it feels.</p>
+    <div class="cols">
+
+      <div class="col l1">
+        <header><span class="k">Lane 1</span><span class="nm">Explore</span></header>
+        <div class="body">
+          <p>Try anything. Personal tools, experiments, throwaway ideas. Nothing touches company data.</p>
+          <dl>
+            <dt>Register</dt><dd>Nothing</dd>
+            <dt>Support</dt><dd>None &mdash; it is yours</dd>
+            <dt>Who builds</dt><dd>Anyone</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="col l2">
+        <header><span class="k">Lane 2</span><span class="nm">Paved road</span></header>
+        <div class="body">
+          <p>Real tools other people use. Touches company data, so it goes on the register and uses the standard setup.</p>
+          <dl>
+            <dt>Register</dt><dd>Yes</dd>
+            <dt>Support</dt><dd>You support your app. IT and the data team support the environment it runs on</dd>
+            <dt>Who builds</dt><dd>Anyone</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="col l3">
+        <header><span class="k">Lane 3</span><span class="nm">Engineered</span></header>
+        <div class="body">
+          <p>The systems the company runs on. Built, owned and supported to a standard, with someone accountable around the clock.</p>
+          <dl>
+            <dt>Register</dt><dd>Yes</dd>
+            <dt>Support</dt><dd>Development team, under an SLA</dd>
+            <dt>Who builds</dt><dd>Development team</dd>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+    <p class="lede" style="margin-top:20px">An app can move up a lane when it earns it. That is a deliberate step with a conversation attached, not a surprise &mdash; the team taking it on gets to look at it first and decide whether it comes across as is.</p>
+  </section>
+
+  <section>
+    <h3>What this protects</h3>
+    <h4>Most of Redmond never notices any of this</h4>
+    <ul class="plain">
+      <li>No approval queue to try something. Lane 1 registers nothing and asks no one.</li>
+      <li>The rules land only where the risk actually is &mdash; company data, and systems we depend on.</li>
+      <li>People keep building. We stop being surprised by what they built.</li>
+      <li>When something matters enough to be supported properly, there is a path to that instead of a rebuild.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Who decides</h3>
+    <h4>The AI Governance Team</h4>
+    <p class="lede">A standing group of seven, drawn from teams that already exist. It meets weekly. It is not a new department, and it does not operate anything.</p>
+    <table>
+      <caption>What it decides, and who runs it day to day</caption>
+      <thead>
+        <tr><th scope="col">Sets the direction</th><th scope="col">Runs it day to day</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">What counts as sensitive data</th><td>Data team</td></tr>
+        <tr><th scope="row">Access, identity and roles</th><td>IT team</td></tr>
+        <tr><th scope="row">The register and what stays on it</th><td>Development team</td></tr>
+        <tr><th scope="row">Approved tools and third-party apps</th><td>App team</td></tr>
+        <tr><th scope="row">Development standards and review</th><td>Development team</td></tr>
+      </tbody>
+    </table>
+    <div class="callout" style="margin-top:20px">
+      <p><strong>Why the split matters.</strong> If this group started operating things, every access request in the company would wait on a weekly meeting. It sets the standard. The team whose job it already is does the work.</p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Where we are</h3>
+    <h4>What we are asking for</h4>
+    <ul class="plain">
+      <li>Agreement that this is real and already here, not a forecast.</li>
+      <li>Agreement that the three lanes are the right shape &mdash; freedom by default, structure where it is earned.</li>
+      <li>Endorsement of the governance team as the group that sets direction, so the answers stop being made up one at a time.</li>
+    </ul>
+    <p class="muted">The register is live. The lane model is documented. The governance team is meeting weekly. Development standards come after those two are settled &mdash; deliberately last.</p>
+  </section>
+
+  <section>
+    <h3>The slides</h3>
+    <h4>Same material, in a deck</h4>
+    <p class="lede">Both are 16:9 and ready to present or forward.</p>
+    <div class="dls">
+      <a class="dl" href="software-has-left-the-dev-team.pdf">
+        <span class="nm">Software Has Left the Dev Team</span>
+        <span class="meta">PDF &middot; 10 slides</span>
+        <span class="desc">This page as a deck. The why, the numbers, the three lanes, and the governance team.</span>
+      </a>
+      <a class="dl" href="ai-governance-team.pdf">
+        <span class="nm">AI Governance Team</span>
+        <span class="meta">PDF &middot; 10 slides</span>
+        <span class="desc">The detailed version. Membership, what it decides versus what the teams run, who can decline, and what escalates.</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Development Standards &amp; App Registration &mdash; executive briefing</p>
+  <p>Detail behind every section of this page is in Confluence, space TDP.</p>
+</footer>
+
+</body>
+</html>

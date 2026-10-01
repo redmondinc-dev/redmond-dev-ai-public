@@ -193,7 +193,7 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>Development Standards &amp; AI Governance</h1>
-    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 17 September 2026</p>
+    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 1 October 2026</p>
   </div>
 </div>
 
@@ -227,10 +227,10 @@
 
   <div class="own">
     <div class="ohead">Agreed 10 September — responsibilities sit where the lane already is</div>
-    <div class="orow"><div class="w">Data Team</div><div class="d">All data — databases, data sources, APIs including Paylocity, permissions, and monitoring access. Also performance, architecture, indexing, and any cloud-hosted data source. Need a database or a data source? Go here.</div></div>
-    <div class="orow"><div class="w">IT Team</div><div class="d">Security, roles, permissions, licences, application servers, and DNS security. Need access or a role? Go here.</div></div>
+    <div class="orow"><div class="w">Data Team</div><div class="d">All data — databases, data sources, APIs including Paylocity, permissions, performance, and monitoring access. Need a database or a data source? Go here.</div></div>
+    <div class="orow"><div class="w">IT Team</div><div class="d">Security, roles, permissions, licences, and application servers. Need access or a role? Go here.</div></div>
     <div class="orow"><div class="w">App Team</div><div class="d">Third-party applications such as Acumatica.</div></div>
-    <div class="orow"><div class="w">Development Team</div><div class="d">Code and application code review, and the registry — routing a broken app to whoever can fix it, and running the annual review.</div></div>
+    <div class="orow"><div class="w">Development Team</div><div class="d">Code, and the registry — routing a broken app to whoever can fix it, and running the annual review.</div></div>
     <div class="orow"><div class="w">You, the builder</div><div class="d">Your own app through Lanes 1 and 2, including first-line support for the app itself.</div></div>
     <div class="foot"><strong>The data team owns the process, not the data.</strong> A request comes to them, they check with the actual owner, and then grant — one front door instead of four hundred.</div>
   </div>
@@ -242,7 +242,8 @@
     <div class="k">Where we are</div>
     <p>The registry is built and being filled in. We are finding out what already exists across Redmond — apps, APIs, MCP servers — before deciding anything about how it should be governed.</p>
     <p>Running alongside that, we are working out what the lanes mean in practice and answering the governance questions underneath: who owns each data source, and who decides access.</p>
-    <p><strong>The registry is substantial and still growing.</strong> 122 entries so far — 50 applications, 48 third-party APIs, 17 Redmond-built APIs, and 7 MCP servers and connectors. <strong>108 are Lane 2 against 13 Lane 3</strong>, roughly eight to one. Several people's work is still to come, plus 56 repositories in the GitHub organization.</p>
+    <p><strong>The audit is bigger than we thought.</strong> The register now holds 122 entries across applications, APIs, servers, and services — 108 in Lane 2, 13 in Lane 3, one still unassigned. Early estimates were ten or twenty. There are also 56 repositories in the GitHub organization being pulled in for analysis.</p>
+    <p><strong>The governance team is defined.</strong> The charter went up on 18 September — membership, cadence, what the team decides versus what the existing teams run, who can decline, and what escalates to business leadership. It goes to the working group for agreement.</p>
     <p><strong>Nothing changes for anyone yet.</strong> No approvals, no permissions, no new process. This phase is visibility only.</p>
   </div>
 
@@ -251,7 +252,7 @@
       <h3>Registry and Lane Model</h3>
       <p class="lede">Phase 1A — know what exists, and publish what each lane means.</p>
       <ul>
-        <li>Filling the registry — 122 entries in, data sources still to add <span>— Jeremiah</span></li>
+        <li>Filling the registry with what is already out there <span>— Jeremiah</span></li>
         <li>Settling the lane count and publishing the model <span>— Kirt</span></li>
         <li>Checking whether existing Redmond tooling can be the foundation <span>— Phil</span></li>
       </ul>
@@ -263,8 +264,17 @@
         <li>Finding a named owner and decision maker for each data source <span>— Kirt</span></li>
         <li>Confirming the default access posture and the sensitive exception list <span>— Kirt</span></li>
         <li>Ranking security priorities so the harness builds the right gates first <span>— Jeremiah</span></li>
-        <li>Defining a data classification scheme so access follows the data <span>— Bryan</span></li>
-        <li>Assessing SharePoint and file storage, where most company data sits <span>— Stuart</span></li>
+        <li>Defining the data classification scheme <span>— Bryan</span></li>
+        <li>Assessing SharePoint and file storage governance <span>— Stuart</span></li>
+      </ul>
+    </div>
+    <div class="track">
+      <h3>AI Governance Team</h3>
+      <p class="lede">Phase 2A — a standing group rather than ad hoc ownership.</p>
+      <ul>
+        <li>Charter published and awaiting the working group's agreement <span>— Kirt</span></li>
+        <li>Strategy sits with the team; day-to-day execution stays with the existing teams <span>— agreed</span></li>
+        <li>Security follows the need — no separate security owner <span>— agreed</span></li>
       </ul>
     </div>
   </div>
@@ -283,7 +293,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1A — Registry and Lane Model<small>Know what exists, and publish what each lane means</small></span>
-      <span class="count">3 in progress · 1 to do · 4 closed</span>
+      <span class="count">2 in progress · 1 to do · 5 closed</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -324,22 +334,6 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-prog"></i><span class="sname">Evaluate Existing Redmond Solutions</span><span class="who">Phil</span><span class="key">DEVSTD-23</span></summary>
-        <div class="sbody">
-          <p class="goal">As the project team, I need to know whether existing Redmond tooling can serve as the registry and build path so that we extend what works instead of rebuilding it.</p>
-          <div class="ac">Acceptance criteria</div>
-          <ul>
-            <li>Evaluate existing MCP servers, project starter tooling, and pre-provisioned sandboxes</li>
-            <li>Produce a written gap list against what Phase 1A requires</li>
-            <li>Recommend whether to adopt, extend, or build fresh</li>
-            <li>Decide one MCP server or separate servers for data and application development</li>
-            <li>Agree the improvement route with the solution's owner rather than assuming it</li>
-            <li>Report findings to the working group before build work starts</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="story">
         <summary><i class="dot d-todo"></i><span class="sname">Move the Registry to Its Final Home</span><span class="who">Jeremiah</span><span class="key">DEVSTD-34</span></summary>
         <div class="sbody">
           <p class="goal">As the project team, I need the registry in a database rather than Confluence so that entries can carry tracked fields and an agent can work with them.</p>
@@ -355,6 +349,11 @@
       </details>
 
       <div class="donehdr">Completed and merged</div>
+
+      <details class="story is-done">
+        <summary><i class="dot d-done"></i><span class="sname">Evaluate Existing Redmond Solutions</span><span class="who">Done</span><span class="key">DEVSTD-23</span></summary>
+        <div class="sbody"><p class="goal">Closed 29 September. Existing MCP servers, starter tooling, and sandboxes evaluated against what Phase 1A requires, with a recommendation back to the working group.</p></div>
+      </details>
 
       <details class="story is-done">
         <summary><i class="dot d-done"></i><span class="sname">Add Lane Model Fields to the Registry Template</span><span class="who">Done</span><span class="key">DEVSTD-4</span></summary>
@@ -469,12 +468,28 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 2A — Launch the AI Governance Team<small>A standing team rather than ad hoc ownership</small></span>
-      <span class="count">Not started</span>
-      <span class="pill p-next">Next</span>
+      <span class="count">1 in progress</span>
+      <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
       <p class="why">Discovery in 1B defines what needs governing. This phase creates the group that does it, with named people and real staffing. Twenty responsibility areas across five headings: AI strategy, governance and policy, data governance and security, enablement and adoption, and technology and risk oversight.</p>
-      <p class="empty">No stories yet — scoped once 1B discovery has shape.</p>
+      <p class="why">The charter was published on 18 September and the responsibilities page refreshed against it on 29 September. Three questions that had recurred since 8/11 — owns versus coordinates, which areas are day one, and where authority comes from — now have answers.</p>
+
+      <details class="story">
+        <summary><i class="dot d-prog"></i><span class="sname">Define the AI Governance Team</span><span class="who">Kirt</span><span class="key">DEVSTD-37</span></summary>
+        <div class="sbody">
+          <p class="goal">As the project facilitator, I need the AI Governance Team defined so that AI at Redmond has a standing group with clear ownership instead of being handled ad hoc.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Team purpose and scope agreed against the five responsibility areas in the epic</li>
+            <li>Roles defined, with a named lead and an owner for each responsibility area</li>
+            <li>Members named and confirmed they accept the role</li>
+            <li>Decision authority documented — what the team decides alone and what escalates</li>
+            <li>Meeting cadence set</li>
+            <li>Charter drafted and approved by the sponsor</li>
+          </ul>
+        </div>
+      </details>
     </div>
   </details>
 
@@ -588,11 +603,8 @@
   <ul class="open">
     <li><b>How many lanes.</b> The working answer is three lanes and two merges — a merge is a transition, not a place. Needs settling before the model is published, along with what we call the second merge.</li>
     <li><b>Does PII move an app out of Lane 2.</b> The published identifiers say yes; practice has treated sensitive data as normal in Lane 2. The two readings need reconciling.</li>
-    <li><b>How much review a Lane 2 app warrants.</b> An AI review on merge is the leading proposal. The position landed on: start without mandatory review on every change and turn it on if problems appear.</li>
-    <li><b>Is Lane 2 too broad?</b> Possible sub-variants — an app showing you only your own data versus one using application-level credentials where anyone sees everything.</li>
-    <li><b>Sustaining registration.</b> The harness is the answer, but it does not exist yet. Until it does, new apps get in by asking.</li>
-    <li><b>MCP architecture.</b> One server scoped by Entra roles, several specialised servers, or a gateway that resolves roles first.</li>
-    <li><b>Nobody is assigned to ask the security questions.</b> Agreed it is everyone's concern, which currently means it is no one's job.</li>
+    <li><b>Lane 2 has no review gates today.</b> An AI review on merge is the leading proposal, built into the harness.</li>
+    <li><b>Who owns the registry day to day.</b> The development team owns it in principle. Who maintains entries and chases renewals week to week is not named.</li>
     <li><b>Who provisions and pays for cloud resources.</b> Shared ad hoc between IT and dev today. Forgotten, still-billing resources are the named risk.</li>
     <li><b>Who approves a data access exception.</b> The default is settled — open, except sensitive HR data and Paylocity. The decision rights are not.</li>
     <li><b>Acumatica roles and permissions.</b> Pending since 2019. The role structure is a base that applies almost everywhere else.</li>
@@ -606,6 +618,9 @@
   <div class="links">
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/199426060">Magic 8 — Project Charter<small>Why, scope, stakeholders, success criteria</small></a>
     <a href="./index.html">The Lane Model<small>Sandbox, paved road, engineered</small></a>
+    <a href="./why.html">Software Has Left the Dev Team<small>Executive briefing, with both decks</small></a>
+    <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/261685250">AI Governance Team<small>Charter — membership, authority, what escalates</small></a>
+    <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/243499011">AI Governance Responsibilities<small>The twenty responsibility areas</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/overview">Confluence Space<small>Full documentation and meeting notes</small></a>
     <a href="https://redmondinc.atlassian.net/jira/software/c/projects/DEVSTD/boards/1158">DEVSTD Jira Board<small>Live epics and stories</small></a>
   </div>

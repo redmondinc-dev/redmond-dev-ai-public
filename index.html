@@ -235,6 +235,33 @@
   }
   .note b{color:var(--navy)}
 
+  /* ---------- gaps / to do ---------- */
+  .gaps{margin:34px 0 0;border-top:3px solid var(--navy);padding-top:20px}
+  .gaps h2{
+    font-size:15px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--navy);margin:0 0 3px;font-weight:700;
+  }
+  .gaps .sub{font-size:13px;color:var(--muted);margin:0 0 16px;max-width:760px}
+  .gaplist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  @media (max-width:760px){.gaplist{grid-template-columns:1fr}}
+  .gap{
+    background:#fff;border:1px solid var(--rule);border-left:4px solid var(--muted);
+    border-radius:3px;padding:12px 15px;
+  }
+  .gap.g-open{border-left-color:var(--lane2)}
+  .gap.g-none{border-left-color:var(--lane3);background:#fdf8f6}
+  .gap .q{font-weight:700;font-size:13.5px;display:block;margin-bottom:4px}
+  .gap .a{font-size:12.5px;color:var(--ink);margin:0 0 7px}
+  .gap .trk{
+    font-size:11px;letter-spacing:.04em;color:var(--muted);
+    display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+  }
+  .gap .k{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    background:#eef1f5;border:1px solid var(--rule);border-radius:9px;padding:1px 8px;color:var(--navy);
+  }
+  .gap .k.none{background:#fbe9e3;border-color:#e8c4b6;color:var(--lane3)}
+
   .inset{
     border:1px dashed var(--lane15);
     border-left:4px solid var(--lane15);
@@ -708,6 +735,80 @@
     </div>
   </section>
 
+  <!-- ============ GAPS ============ -->
+  <section class="gaps">
+    <h2>Gaps and to-dos — what still has to be solved</h2>
+    <p class="sub">Everything here is unresolved as of 23 October. Each one is a real decision someone has to make, not a drafting detail. Two of them have nobody tracking them at all.</p>
+
+    <div class="gaplist">
+
+      <div class="gap g-open">
+        <span class="q">How many lanes</span>
+        <p class="a">Three lanes and two merges was settled on 2 October. The four-level risk scale the group worked through on 22 October does not map cleanly onto three, so this needs resolving before the model is ratified.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-22</span> Kirt</div>
+      </div>
+
+      <div class="gap g-open">
+        <span class="q">Does registering commit the dev team to support it</span>
+        <p class="a">Open since 11 August. If yes, every registration is a capacity promise and we should say so. If no, say that too — builders may already be assuming otherwise.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-22</span> Kirt</div>
+      </div>
+
+      <div class="gap g-open">
+        <span class="q">Who approves a Lane 2 pull request</span>
+        <p class="a">The review itself is designed. The accountable human is not named. Automated and AI review can run, but a person merges and carries it.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-29</span> unassigned</div>
+      </div>
+
+      <div class="gap g-open">
+        <span class="q">Who covers a Lane 2 app when the builder is out</span>
+        <p class="a">Shape, trigger to stand it up, and how priority is set when capacity is short. Deliberately deferred until there is a real backlog, which is a decision rather than an answer.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-32</span> Jeremiah</div>
+      </div>
+
+      <div class="gap g-open">
+        <span class="q">Which data counts as sensitive</span>
+        <p class="a">Settled at the edges — sensitive data brings the dev team in; ordinary name, status and work location is normal Lane 2 traffic. The categories in between need naming before the escalation trigger is usable.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-35</span> Bryan</div>
+      </div>
+
+      <div class="gap g-open">
+        <span class="q">Where your app and its data should live</span>
+        <p class="a">Until these land, "use the paved road" does not name a road. Hosting options and the criteria between them; database options and the latency trade-off that drives the choice.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-45</span><span class="k">DEVSTD-46</span> Stuart, Bryan</div>
+      </div>
+
+      <div class="gap g-open">
+        <span class="q">Who runs the twelve-month renewal</span>
+        <p class="a">The rule says an app that is not renewed is disabled and loses data access. Nobody owns running that, which is the same gap as day-to-day ownership of the registry itself.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-34</span> Jeremiah — ownership still unnamed</div>
+      </div>
+
+      <div class="gap g-open">
+        <span class="q">Taking the model to Lane 2 builders</span>
+        <p class="a">The model has not been put to the people it most affects. Every gap on this page is a gap in something they have not seen yet.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-39</span> Kirt</div>
+      </div>
+
+      <div class="gap g-none">
+        <span class="q">Nothing detects an app that crossed a line</span>
+        <p class="a">Escalation is entirely self-identification. There is no mechanism that notices when an app quietly passes 25 users, gains external access, or becomes something another system depends on. The automated sweeps check for leaked credentials and missing SSO, not for lane drift.</p>
+        <div class="trk"><span class="k none">No story yet</span></div>
+      </div>
+
+      <div class="gap g-none">
+        <span class="q">Lane 1 is invisible by construction</span>
+        <p class="a">Lane 1 registers nothing, so the register holds no Lane 1 entries. That is correct by the rules — and it means the one lane where someone might be building against live data without realising it is the lane we cannot see into. The 1.5 on-ramp assumes the builder knows they have outgrown the sandbox.</p>
+        <div class="trk"><span class="k none">No story yet</span></div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <b>If one of these affects what you are building, say so.</b> These are open because they have not been decided, not because they are being hidden. The ones with no story behind them are the ones most likely to be missed.
+    </div>
+  </section>
+
 </main>
 
 <footer class="meta">
@@ -717,7 +818,7 @@
     <table style="border-collapse:collapse;margin-top:9px;font-size:11.5px">
       <tr>
         <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.12</b> &nbsp; 23 Oct 2026</td>
-        <td style="padding:3px 0">Lane 2 peer review standard added from the 22 October session — adversarial sub-agent review before the pull request, Copilot second pass, review posted to the builders' group, human approves. Lane count reopened against the four-level risk scale. Register count updated to 263. Hosting and database standards and the final-approver question added as open.</td>
+        <td style="padding:3px 0">Lane 2 peer review standard added from the 22 October session — adversarial sub-agent review before the pull request, Copilot second pass, review posted to the builders' group, human approves. Lane count reopened against the four-level risk scale. Register count updated to 263. Hosting and database standards and the final-approver question added as open. Gaps and to-dos section added at the bottom, including two gaps with no story behind them: nothing detects lane drift, and Lane 1 is invisible by construction.</td>
       </tr>
       <tr>
         <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.11</b> &nbsp; 5 Oct 2026</td>

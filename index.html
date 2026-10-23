@@ -300,7 +300,7 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>AI &amp; App Development Lane Model</h1>
-    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1.11 &nbsp;|&nbsp; 5 October 2026</p>
+    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1.12 &nbsp;|&nbsp; 23 October 2026</p>
   </div>
 </div>
 
@@ -458,7 +458,7 @@
     <div class="note">
       <b>Your lane follows what you are building, not who you are.</b> Three things decide it: the data your app reaches, who comes to depend on it, and what happens if it stops. A developer on the dev team building a personal utility is in Lane 1. A business-unit analyst building something the company runs on is in Lane 3. Experience and job title do not come into it.
       <br><br>
-      <b>And the point of all this is more apps, not fewer.</b> The register holds 122 entries today — 108 of them Lane 2. If this works, that number should keep climbing — built by people across the business, without waiting on the development team. The lanes exist to make that safe, not to slow it down.
+      <b>And the point of all this is more apps, not fewer.</b> The register holds 263 entries today — 20 of them Lane 3, and most of the rest Lane 2. If this works, that number should keep climbing — built by people across the business, without waiting on the development team. The lanes exist to make that safe, not to slow it down.
     </div>
   </section>
 
@@ -522,6 +522,10 @@
           <div class="step" style="--accent:var(--lane2)">
             <div class="t">Renew every twelve months</div>
             <div class="d">Confirm it is still used and still needed, or it is disabled and loses data access.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Review before you merge</div>
+            <div class="d">Agreed 22 October. A fresh sub-agent reviews your code before the pull request opens — never the agent that wrote it. Copilot runs a second, aggressive pass. The pull request goes to the builders' group rather than one named person, and a human reads what came back, skims the changes, and merges. The review is about business logic, not code style.</div>
           </div>
           <div class="step" style="--accent:var(--lane2)">
             <div class="t">Lane 2 is not lesser, and it is broad</div>
@@ -667,6 +671,14 @@
             <div class="d">The default is settled — open, except sensitive HR data and Paylocity. What is still open is who approves an exception and who that escalates to.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Who approves your pull request</div>
+            <div class="d">The review itself is settled. Who carries the responsibility for the final human approval is not — automated and AI review can run, but a person signs off, and nobody is named yet.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Where your app and its data should live</div>
+            <div class="d">Sanctioned hosting and database options are being written now — including the trade-off between a free tier and a cheap Azure database, which comes down to how real-time your app has to be.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
             <div class="t">What moves an app up a lane</div>
             <div class="d">The triggers above are the current draft. We want them clear enough that you recognize the moment yourself.</div>
           </div>
@@ -677,6 +689,10 @@
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">What we call the merges</div>
             <div class="d">Shown as "1.5" the on-ramp and "2.5" the merge into Lane 3. Whether half numbers are the right way to name a transition is still open.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane1)">
+            <div class="t">Whether three lanes is the right number</div>
+            <div class="d">Settled on 2 October as three lanes and two merges. The four-level risk scale the group worked through on 22 October does not map cleanly onto three, so this is being looked at again before the model is ratified.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">Which data counts as sensitive</div>
@@ -699,6 +715,10 @@
   <details style="margin-top:10px">
     <summary style="cursor:pointer;color:var(--navy);font-weight:600">Version history</summary>
     <table style="border-collapse:collapse;margin-top:9px;font-size:11.5px">
+      <tr>
+        <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.12</b> &nbsp; 23 Oct 2026</td>
+        <td style="padding:3px 0">Lane 2 peer review standard added from the 22 October session — adversarial sub-agent review before the pull request, Copilot second pass, review posted to the builders' group, human approves. Lane count reopened against the four-level risk scale. Register count updated to 263. Hosting and database standards and the final-approver question added as open.</td>
+      </tr>
       <tr>
         <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.11</b> &nbsp; 5 Oct 2026</td>
         <td style="padding:3px 0">Project renamed Technology Governance and Standards. Charter and registry pages relabeled to match.</td>

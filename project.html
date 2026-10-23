@@ -193,17 +193,17 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>Technology Governance and Standards</h1>
-    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 5 October 2026 &nbsp;|&nbsp; project renamed from Development Standards &amp; App Registration</p>
+    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 23 October 2026 &nbsp;|&nbsp; project renamed from Development Standards &amp; App Registration</p>
   </div>
 </div>
 
 <main>
 
   <div class="strip">
-    <div class="stat"><div class="k">Phase</div><div class="v">1A &amp; 1B</div><div class="s">Running in parallel</div></div>
+    <div class="stat"><div class="k">Phase</div><div class="v">1A, 1B &amp; 2B</div><div class="s">Running in parallel</div></div>
     <div class="stat"><div class="k">Sponsor</div><div class="v">Aaron</div><div class="s">IT owns the project</div></div>
     <div class="stat"><div class="k">Facilitator</div><div class="v">Kirt</div><div class="s">Weekly, Thursdays 1:00</div></div>
-    <div class="stat"><div class="k">Status</div><div class="v">Kicked Off / Discovery</div><div class="s">Kicked off 3 September 2026</div></div>
+    <div class="stat"><div class="k">Status</div><div class="v">Discovery and first builds</div><div class="s">Kicked off 3 September 2026</div></div>
   </div>
 
   <details class="whobox">
@@ -242,11 +242,13 @@
 
   <div class="headline">
     <div class="k">Where we are</div>
-    <p>The registry is built and being filled in. We are finding out what already exists across Redmond — apps, APIs, MCP servers — before deciding anything about how it should be governed.</p>
+    <p>The registry is seeded. We now know, roughly, what exists across Redmond — apps, APIs, MCP servers, databases — and the work has shifted from cataloguing to building the things that keep it current.</p>
     <p>Running alongside that, we are working out what the lanes mean in practice and answering the governance questions underneath: who owns each data source, and who decides access.</p>
-    <p><strong>The audit is bigger than we thought.</strong> The register now holds 122 entries across applications, APIs, servers, and services — 108 in Lane 2, 13 in Lane 3, one still unassigned. Early estimates were ten or twenty. There are also 56 repositories in the GitHub organization being pulled in for analysis.</p>
-    <p><strong>The governance team is defined.</strong> The charter went up on 18 September — membership, cadence, what the team decides versus what the existing teams run, who can decline, and what escalates to business leadership. It goes to the working group for agreement.</p>
-    <p><strong>Nothing changes for anyone yet.</strong> No approvals, no permissions, no new process. This phase is visibility only.</p>
+    <p><strong>The audit kept growing.</strong> The register now holds 263 entries across applications, APIs, servers, services, and databases — 20 of them Lane 3, the rest Lane 2 or not yet assigned. Early estimates were ten or twenty. Lane 1 holds nothing, by design: it needs no registration.</p>
+    <p><strong>Seeding is done.</strong> The registry is populated and the lane fields are on the entry template. The next step is moving it off Confluence — decided on 22 October, the permanent home is the existing projects site extended, not a new build.</p>
+    <p><strong>The harness has started.</strong> Discovery closed on 22 October and the build is underway. Standards reach the builder's agent through the MCP server and organization-level skills; only two things hard-fail a merge — missing SSO and publicly exposed credentials. Everything else reports without blocking.</p>
+    <p><strong>Security priorities are ranked.</strong> Acumatica roles first, then per-user MCP server scoping, then table-level database permissions. The agreed posture: not the bare minimum and not perfection — a layer or two above the low-hanging fruit.</p>
+    <p><strong>Nothing changes for anyone yet.</strong> No approvals, no permissions, no new process. Visibility first.</p>
   </div>
 
   <div class="tracks">
@@ -254,9 +256,10 @@
       <h3>Registry and Lane Model</h3>
       <p class="lede">Phase 1A — know what exists, and publish what each lane means.</p>
       <ul>
-        <li>Filling the registry with what is already out there <span>— Jeremiah</span></li>
         <li>Settling the lane count and publishing the model <span>— Kirt</span></li>
-        <li>Checking whether existing Redmond tooling can be the foundation <span>— Phil</span></li>
+        <li>Moving the registry off Confluence to the projects site <span>— Jeremiah</span></li>
+        <li>Surfacing live GitHub status on each registry entry <span>— Jeremiah</span></li>
+        <li>Taking the lane model to Lane 2 builders <span>— Kirt</span></li>
       </ul>
     </div>
     <div class="track">
@@ -264,10 +267,21 @@
       <p class="lede">Phase 1B — understand the problem before proposing an architecture.</p>
       <ul>
         <li>Finding a named owner and decision maker for each data source <span>— Kirt</span></li>
+        <li>Implementing the Acumatica role set <span>— Bryan</span></li>
         <li>Confirming the default access posture and the sensitive exception list <span>— Kirt</span></li>
-        <li>Ranking security priorities so the harness builds the right gates first <span>— Jeremiah</span></li>
+        <li>Deciding policy on personal AI accounts and connector approvals <span>— Kirt</span></li>
         <li>Defining the data classification scheme <span>— Bryan</span></li>
         <li>Assessing SharePoint and file storage governance <span>— Stuart</span></li>
+      </ul>
+    </div>
+    <div class="track">
+      <h3>Building the Harness</h3>
+      <p class="lede">Phase 2B — the paved road, made real.</p>
+      <ul>
+        <li>Building the harness itself, piloted on one repo first <span>— Phil</span></li>
+        <li>Scoping MCP server access per user <span>— Phil, tracked in RMCP</span></li>
+        <li>Sanctioned hosting standards <span>— Stuart</span></li>
+        <li>Sanctioned database standards <span>— Bryan</span></li>
       </ul>
     </div>
     <div class="track">
@@ -295,28 +309,11 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1A — Registry and Lane Model<small>Know what exists, and publish what each lane means</small></span>
-      <span class="count">2 in progress · 1 to do · 5 closed</span>
+      <span class="count">1 in progress · 3 to do · 6 closed</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
       <p class="why">A catalogue of anything built or used at Redmond, and the model that says what each thing is allowed to do. The registration threshold is whether something touches company data — if it does not, there is nothing to register.</p>
-
-      <details class="story">
-        <summary><i class="dot d-prog"></i><span class="sname">Seed the Registry</span><span class="who">Jeremiah</span><span class="key">DEVSTD-3</span></summary>
-        <div class="sbody">
-          <p class="goal">As the project team, I need the registry populated with what already exists so that we know what is running before we try to govern it.</p>
-          <div class="ac">Acceptance criteria</div>
-          <ul>
-            <li>Register apps, third-party APIs, APIs we build, MCP servers, and connectors</li>
-            <li>Include anything under development, partially built, or not currently in use</li>
-            <li>Capture owner, purpose, data touched, and where code and documentation live</li>
-            <li>Reference credentials by location only — none stored in the registry</li>
-            <li>Create entries from the template so the summary tables populate</li>
-            <li>Apply the registry label by hand in Confluence or the entry will not appear</li>
-            <li>Follow up with builders surfaced during seeding</li>
-          </ul>
-        </div>
-      </details>
 
       <details class="story">
         <summary><i class="dot d-prog"></i><span class="sname">Ratify and Publish the Lane Model</span><span class="who">Kirt</span><span class="key">DEVSTD-22</span></summary>
@@ -343,14 +340,42 @@
           <ul>
             <li>Columns defined from what seeding actually produced</li>
             <li>Tracked fields added — last checked, issues found</li>
-            <li>Migrated to the projects site</li>
             <li>Runs after seeding and the data component are complete, so the migration starts from clean data</li>
-            <li>Confluence retired as the working surface once the move is done</li>
+            <li>Confluence remains the seeding surface only, and is retired as the working surface once the move is done</li>
+            <li>Decided 22 October — the permanent home is the existing projects site, extended, not a new build</li>
+            <li>If a replacement is built instead, the existing site is decommissioned; two systems with the same purpose is the outcome to avoid</li>
+            <li>Target is roughly 95 percent of what the existing site already does, with lessons learned folded in</li>
           </ul>
         </div>
       </details>
 
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Tie GitHub Into the Registry Site</span><span class="who">Jeremiah</span><span class="key">DEVSTD-44</span></summary>
+        <div class="sbody">
+          <p class="goal">As an associate, I need the registry site to show live GitHub status so that I can see what checks an app has passed without being in GitHub myself.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Last commit surfaced per registered app</li>
+            <li>Security check status surfaced per registered app</li>
+            <li>Readable by people who have not connected an agent to GitHub</li>
+            <li>Links through to the repository for those who have</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Take the Lane Model to Lane 2 Builders</span><span class="who">Kirt</span><span class="key">DEVSTD-39</span></summary>
+        <div class="sbody">
+          <p class="goal">As a Lane 2 builder, I need to hear about the model from someone rather than discover it, so that I know what is expected before it affects me.</p>
+        </div>
+      </details>
+
       <div class="donehdr">Completed and merged</div>
+
+      <details class="story is-done">
+        <summary><i class="dot d-done"></i><span class="sname">Seed the Registry</span><span class="who">Done</span><span class="key">DEVSTD-3</span></summary>
+        <div class="sbody"><p class="goal">Registry populated with what already exists — apps, third-party APIs, Redmond-built APIs, MCP servers, connectors and databases. 263 entries as of 23 October.</p></div>
+      </details>
 
       <details class="story is-done">
         <summary><i class="dot d-done"></i><span class="sname">Evaluate Existing Redmond Solutions</span><span class="who">Done</span><span class="key">DEVSTD-23</span></summary>
@@ -384,7 +409,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1B — Governance Discovery<small>Understand the problem before proposing an architecture</small></span>
-      <span class="count">1 in progress · 4 to do</span>
+      <span class="count">1 in progress · 6 to do</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -421,14 +446,45 @@
       </details>
 
       <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Implement the Acumatica Role Set</span><span class="who">Bryan</span><span class="key">DEVSTD-41</span></summary>
+        <div class="sbody">
+          <p class="goal">As the data team, I need the Acumatica roles implemented so that there are real access decisions to apply everywhere else.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Roles implemented against current need, fine-tuned afterward rather than waiting on review</li>
+            <li>Import built so IT can create the roles, then synced to Acumatica</li>
+            <li>Role review page opened to the people who need to review it</li>
+            <li>Gaps named for the non-Acumatica systems the role set does not cover</li>
+            <li>Role type documented as a basis for inferring what data a person should reach</li>
+            <li>Removing access identified as the follow-on phase, requiring conversations with team leads</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Policy for Personal AI Accounts and Connector Approvals</span><span class="who">Kirt</span><span class="key">DEVSTD-43</span></summary>
+        <div class="sbody">
+          <p class="goal">As the project team, I need a decision on personal AI accounts and connector approvals so that company data stops leaving the organization by default.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Decision recorded on whether a company AI account is required, with the exception path named</li>
+            <li>Connector requests reviewed before approval rather than discovered after</li>
+            <li>Team accounts evaluated, with connector sets scoped per team</li>
+            <li>The rule stated plainly and published — no app hosted outside Redmond resources may use Redmond data</li>
+            <li>Remediation path defined for anything already outside</li>
+            <li>The trade against slowing AI learning and adoption weighed explicitly, not ignored</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
         <summary><i class="dot d-todo"></i><span class="sname">Rank Security Priorities for the Harness</span><span class="who">Jeremiah</span><span class="key">DEVSTD-30</span></summary>
         <div class="sbody">
           <p class="goal">As the development team, I need to know which security checks matter most so that we build the highest-value gates into the harness first.</p>
-          <div class="ac">Acceptance criteria</div>
+          <p class="goal"><strong>Ranked 22 October.</strong> First, Acumatica roles — the base layer for ERP and data access. Second, MCP server scoping — per-user Entra scoping, so a single call stops returning every tool to every caller. Third, table-level database permissions — read-only by default, write granted per table.</p>
+          <div class="ac">Still open</div>
           <ul>
-            <li>Security priorities ranked by where the fallout would be worst if something went wrong</li>
-            <li>Top priorities identified as the first harness checks to build</li>
-            <li>Runs after the registry audit, so the ranking reflects what we actually have</li>
+            <li>Table-level database permissions scoped and owned — held by the data team; the obstacle is deciding who should see which tables across millions of records</li>
           </ul>
         </div>
       </details>
@@ -501,13 +557,31 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 2B — Lanes Established and Supported<small>Run the model in practice</small></span>
-      <span class="count">4 to do</span>
-      <span class="pill p-next">Next</span>
+      <span class="count">8 to do · 1 closed</span>
+      <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
       <p class="why">A published model changes nothing on its own. Lanes get assigned to real things, support paths get named teams behind them, and the first apps actually move between lanes so we learn where it breaks. Lane 3 already works. Lane 2 is the gap — a useful tool that people depend on, with no clear answer on who picks it up when the owner is unavailable.</p>
+      <p class="why">Added 22 October: <b>the harness is the delivery mechanism for all of it.</b> Standards reach the builder's agent through the MCP server and organization-level skills and settings, with hooks enforced in Claude Code. Only missing SSO and publicly exposed credentials hard-fail a merge; code-quality findings report without blocking. Repo provisioning carries the agent documentation and hooks from the moment a repo is created, and registration attaches there rather than as a separate step. It pilots on one repo before going organization-wide.</p>
       <p class="why">Added 8 September: the Lane 3 handoff also decides <b>where an app lives</b> — embedded in Teams and Dash, or standalone. That call belongs to the team that will support it, made case by case at the point of promotion. The original builder keeps a voice on user experience and can still open pull requests.</p>
       <p class="why">Added 10 September: <b>support splits by lane.</b> Lane 1 is unsupported. IT supports Lane 2 — the environment, access, roles, and licences — while the person who built the app is first line on the app itself. The development team supports Lane 3, with IT underneath.</p>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Begin Building the Harness</span><span class="who">Phil</span><span class="key">DEVSTD-38</span></summary>
+        <div class="sbody">
+          <p class="goal">As a builder, I need the harness to guide, gate, and record my build so that Redmond's standards apply without me having to remember them.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Standards and hard rules delivered to the builder's agent through the MCP server and organization-level skills and settings</li>
+            <li>Hooks enforced in Claude Code, with the limitation documented that Claude chat cannot enforce them</li>
+            <li>Hard-fail conditions limited to missing SSO and publicly exposed credentials</li>
+            <li>Code-quality findings reported but non-blocking</li>
+            <li>Repo provisioning carries the agent documentation and hooks from the moment the repo is created</li>
+            <li>Registration attaches at the point of provisioning rather than as a separate step</li>
+            <li>Piloted on one repo and reported back before organization-wide rollout</li>
+          </ul>
+        </div>
+      </details>
 
       <details class="story">
         <summary><i class="dot d-todo"></i><span class="sname">AI Review on Merge for Lane 2 Apps</span><span class="who">Unassigned</span><span class="key">DEVSTD-29</span></summary>
@@ -515,10 +589,60 @@
           <p class="goal">As a Lane 2 builder, I need my code checked automatically when I merge so that mistakes get caught before they reach anyone.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
-            <li>Runs against Lane 2 repositories in the Redmond GitHub organization</li>
+            <li>Runs against Lane 2 repositories in the Redmond GitHub organization, built into the harness</li>
             <li>Catches leaked keys, hardcoded secrets, and critical security flaws</li>
-            <li>Critical findings forwarded to the development team</li>
-            <li>Built into the AI development harness rather than a separate step the builder has to remember</li>
+            <li>Adversarial sub-agent review before the pull request is opened — a fresh sub-agent with a clean context window; the agent that wrote the code never reviews its own code</li>
+            <li>Pull request posted to the builders' group rather than to one named reviewer</li>
+            <li>GitHub Copilot code review runs an aggressive pass as the second platform</li>
+            <li>Human reads what the review kicks back, skims the changed files, approves and merges</li>
+            <li>Applies at Lane 2 and above, on the basis that the blast radius already warrants it</li>
+            <li>Review framed around business logic rather than code quality</li>
+            <li>A Teams group for anyone building, used for review callouts, on a reciprocity basis — if you want your work reviewed, you review</li>
+            <li>Owner of the final human approval named — unresolved as of 22 October</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Automated Background Security Sweeps</span><span class="who">Phil</span><span class="key">DEVSTD-42</span></summary>
+        <div class="sbody">
+          <p class="goal">As the development team, I need automated security sweeps running across our code so that problems surface without waiting for someone to open a merge request.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Sweeps run headless and continuously across the organization's repositories, not only at merge</li>
+            <li>Checks limited to the failures that take us down — leaked credentials, missing SSO — and explicitly not UI or visual changes</li>
+            <li>A separate review lens for apps that are themselves AI agents, covering prompt injection and system prompt inspection</li>
+            <li>An OWASP-style pass over common mistakes for ordinary applications</li>
+            <li>Sweep results renew the registry record annually</li>
+            <li>Findings route to the app's named owner on the registry entry</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Define Sanctioned Hosting Standards</span><span class="who">Stuart</span><span class="key">DEVSTD-45</span></summary>
+        <div class="sbody">
+          <p class="goal">As a Lane 2 builder, I need a sanctioned answer for where my app lives so that I am not inventing hosting every time I finish something.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Standard hosting options named, with the criteria for choosing between them</li>
+            <li>The "own repo behind the data site" pattern documented as a supported option, including that it needs no DNS entry</li>
+            <li>Guidance recorded that the free tier is the starting point, and what drives the move off it</li>
+            <li>Published where builders will actually find it, not only in Confluence</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Define Sanctioned Database Standards</span><span class="who">Bryan</span><span class="key">DEVSTD-46</span></summary>
+        <div class="sbody">
+          <p class="goal">As a Lane 2 builder, I need a sanctioned answer for where my data lives so that I am not choosing a database by guesswork.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Standard database options named — relational, Fabric, blob storage — with the latency trade-off stated plainly</li>
+            <li>Guidance recorded that the move to a cheap Azure database is driven by how real-time the app has to be</li>
+            <li>Per-database resource limits considered as part of the standard</li>
+            <li>Published where builders will actually find it, not only in Confluence</li>
           </ul>
         </div>
       </details>
@@ -538,15 +662,20 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Define the Forward-Deployed Engineer Role</span><span class="who">Jeremiah</span><span class="key">DEVSTD-32</span></summary>
+        <summary><i class="dot d-todo"></i><span class="sname">Define the Lane 2 Support Function and the Forward-Deployed Engineer Role</span><span class="who">Jeremiah</span><span class="key">DEVSTD-32</span></summary>
         <div class="sbody">
-          <p class="goal">As the development team, I need the forward-deployed engineer role defined so that we can staff the support layer Lane 2 needs.</p>
+          <p class="goal">As the development team, I need the Lane 2 support function and the forward-deployed engineer role defined so that we can staff the support layer Lane 2 needs.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
             <li>Define what the role does and does not do — analysis and communication rather than building to spec</li>
             <li>Define how they drive the Lane 2 to Lane 3 decision, including when to route to the projects team</li>
             <li>Set the skills profile — open to new ideas, strong on support and customer service</li>
             <li>Estimate how many are needed and where they report</li>
+            <li>Name what the function covers — the application layer, beyond the environment IT and the data team already support</li>
+            <li>Decide its shape — a separate team, a consulting function, or additional development headcount</li>
+            <li>Set the trigger for standing it up, since there is no significant backlog today</li>
+            <li>Confirm the builder stays first line, and what happens when they are unavailable</li>
+            <li>State how priority is set when capacity is short — reach, not request order</li>
           </ul>
         </div>
       </details>
@@ -564,6 +693,29 @@
             <li>Registration keeps working for new apps without anyone chasing people</li>
           </ul>
         </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Lock Down MCP Server Access</span><span class="who">Phil</span><span class="key">RMCP-21</span></summary>
+        <div class="sbody">
+          <p class="goal">As the data team, I need MCP server access scoped per user so that a single call does not expose every available tool to every caller.</p>
+          <p class="goal">Tracked in the Redmond MCP project rather than here, since that is where the server's own work lives. Second of the three ranked security priorities.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Tool visibility scoped by Entra identity rather than returned in full to any caller</li>
+            <li>Role mapping reuses the Acumatica role set wherever it applies</li>
+            <li>Access decisions logged and reviewable — who called what, and when</li>
+            <li>Current open-access behavior documented as the baseline being replaced</li>
+            <li>Just-in-time access evaluated: a request opens a specific gate for a window rather than holding every key permanently</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="donehdr">Completed and merged</div>
+
+      <details class="story is-done">
+        <summary><i class="dot d-done"></i><span class="sname">Discovery — What the Harness Is</span><span class="who">Done</span><span class="key">DEVSTD-40</span></summary>
+        <div class="sbody"><p class="goal">Closed 22 October. Phil reported to the working group on what the harness is and how standards reach a builder's agent. The build follows in DEVSTD-38.</p></div>
       </details>
     </div>
   </details>
@@ -604,18 +756,19 @@
   <h2 class="sec" style="margin-top:28px">What is still open</h2>
   <div class="rule"></div>
   <ul class="open">
-    <li><b>Who supports a Lane 2 app beyond its builder.</b> The one substantial gap left in the model. IT covers the environment and the data team covers data access, but no group owns the application layer once the builder is unavailable. Not urgent today, expected to become urgent. A placeholder is deliberately left rather than a false answer.</li>
+    <li><b>Who supports a Lane 2 app beyond its builder.</b> The one substantial gap left in the model. IT covers the environment and the data team covers data access, but no group owns the application layer once the builder is unavailable. Now scoped in DEVSTD-32, not yet answered.</li>
+    <li><b>Who approves a Lane 2 pull request.</b> Raised on 22 October and left open. Automated and AI review can run, but a person approves the merge and carries the responsibility. Nobody is named.</li>
+    <li><b>Who owns the Redmond data MCP server day to day.</b> Phil tracks it; Bryan owns the component. The development team's position is unknown. Recurring, and not captured in a story.</li>
     <li><b>Lane 2 builder buy-in.</b> The model has not yet been put to the people it most affects. Lane 3 buy-in is straightforward; Lane 2 is where the change actually lands.</li>
     <li><b>Telling Lane 2 builders the process exists.</b> Knowing what is out there has been the hard part, and people building do not reliably know the group wants to hear from them.</li>
-    <li><b>How many lanes.</b> Settled on 1 October — three lanes and two merges, no fourth lane. Lane 2 is recognized as the broadest, containing real variation rather than being split. What we call the second merge is still loose.</li>
+    <li><b>How many lanes.</b> Settled on 1 October — three lanes and two merges, no fourth lane. The four-level risk scale used on 22 October does not map cleanly onto three lanes, so this is not fully closed. What we call the second merge is still loose.</li>
     <li><b>Does PII move an app out of Lane 2.</b> The published identifiers say yes; practice has treated sensitive data as normal in Lane 2. The two readings need reconciling.</li>
-    <li><b>Lane 2 has no review gates today.</b> An AI review on merge is the leading proposal, built into the harness.</li>
-    <li><b>Who owns the registry day to day.</b> The development team owns it in principle. Who maintains entries and chases renewals week to week is not named.</li>
+    <li><b>Who owns the registry day to day.</b> The development team owns it in principle. Who maintains entries and chases renewals week to week is not named. Raised again on 22 October: the concern is building the thing before the people who run it exist.</li>
     <li><b>Who provisions and pays for cloud resources.</b> Shared ad hoc between IT and dev today. Forgotten, still-billing resources are the named risk.</li>
     <li><b>Who approves a data access exception.</b> The default is settled — open, except sensitive HR data and Paylocity. The decision rights are not.</li>
-    <li><b>Acumatica roles and permissions.</b> Pending since 2019. The role structure is a base that applies almost everywhere else.</li>
     <li><b>Who builds the standardized API layer.</b> Four parts agreed in principle on 8 September, none of them assigned.</li>
     <li><b>External and non-associate access.</b> Spouses, plus-ones, and partners get solved app by app today. Needs a standard.</li>
+    <li><b>Premier to Azure hosting.</b> Roughly $7,800 a month today — about $3,100 for non-Acumatica hosting and a little over $4,000 for Acumatica — plus support hours billed per ticket. Cost is close to a wash; the case is isolation, flexibility and support value, and licensing is the deciding variable. Belongs to infrastructure rather than this project, but it shapes the hosting standard.</li>
     <li><b>Timeline and budget.</b> No target date or estimate yet.</li>
   </ul>
 
@@ -627,6 +780,8 @@
     <a href="./why.html">Software Has Left the Dev Team<small>Executive briefing, with both decks</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/261685250">Tech Team Coordination<small>Charter — membership, authority, what escalates</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/243499011">Governance Responsibilities<small>The twenty responsibility areas</small></a>
+    <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/285999105">22 October Working Session<small>Harness, peer review, security ranking, registry home</small></a>
+    <a href="https://projects.redmondinc.com/registry/">The Registry<small>Every app, API, MCP server and database, with owners</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/overview">Confluence Space<small>Full documentation and meeting notes</small></a>
     <a href="https://redmondinc.atlassian.net/jira/software/c/projects/DEVSTD/boards/1158">DEVSTD Jira Board<small>Live epics and stories</small></a>
   </div>

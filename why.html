@@ -346,6 +346,17 @@
   </section>
 
   <section>
+    <h3>Does it work</h3>
+    <h4>The first real test came in October, and the model held</h4>
+    <p class="lede">Someone wanted an AI tool to write back into a live production system &mdash; the first time an agent would change records rather than just read them. The important part is what happened next: <strong>the question got raised rather than quietly connected.</strong> Somebody recognised it as a decision, and brought it to the group.</p>
+    <div class="callout">
+      <p><strong>What we decided.</strong> Writing to production does not automatically make something a Lane 3 app. What matters is the blast radius &mdash; a contained mistake the builder can find and fix stays in Lane 2, while writing to the systems the company's books depend on does not.</p>
+      <p><strong>Why it is defensible.</strong> The agent works with the person's own credentials and nothing more. It cannot do anything that person could not already do by hand. What is different is that a human is no longer deciding each step &mdash; so the write goes through our own server, on a scoped account, tested first, with the data team alongside.</p>
+    </div>
+    <p class="muted">A second decision from the same session: from 9 November, Redmond data can only be reached from a company AI account. Data pulled into a personal account leaves with the person when they go.</p>
+  </section>
+
+  <section>
     <h3>Who decides</h3>
     <h4>Tech Team Coordination</h4>
     <p class="lede">A standing group drawn from teams that already exist — IT, data, development, the app team, and projects. It meets weekly. It is not a new department and it does not operate anything. AI governance sits inside it rather than beside it, because the line between AI and technology no longer means much.</p>
@@ -388,8 +399,9 @@
       <li>Help getting the word out, so people building something know the path exists and know who to talk to. Not knowing what is out there has been the hard part.</li>
       <li>Working through the open piece with us: who picks up a Lane 2 app when the person who built it cannot. It is not urgent today. It is coming.</li>
       <li>And a second one we named in October: who approves a Lane 2 pull request. A review can run automatically, but a person signs off and carries it. Nobody is named yet.</li>
+      <li>A third, newer one: where these apps and their data should live. Azure, a lighter hosting platform on a corporate account, or wherever the builder already set something up &mdash; and whether we are comfortable with our data sitting outside Microsoft at all.</li>
     </ul>
-    <p class="muted">The register is live and seeded. The lane model is documented. The governance team is meeting weekly. As of October the harness is being built &mdash; the thing that carries the standards to you rather than asking you to remember them &mdash; and the hosting and database standards are being written alongside it.</p>
+    <p class="muted">The register is live and seeded. The lane model is documented and now being tested against real cases. The governance team is meeting weekly. The harness is being built &mdash; the thing that carries the standards to a builder rather than asking them to remember &mdash; and a Lane 2 developer group now exists for peer review. The open piece we would most like help with is where these apps should be hosted, because until that is answered, &quot;use the paved road&quot; does not name a road.</p>
   </section>
 
   <section>

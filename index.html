@@ -327,7 +327,7 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>AI &amp; App Development Lane Model</h1>
-    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1.13 &nbsp;|&nbsp; 26 October 2026</p>
+    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1.14 &nbsp;|&nbsp; 29 October 2026</p>
   </div>
 </div>
 
@@ -413,6 +413,8 @@
             <ul>
               <li>Internal data through approved connectors</li>
               <li>Role-scoped through the MCP server</li>
+              <li>From a company AI account &mdash; from 9 November, personal accounts cannot reach Redmond data</li>
+              <li>Writes allowed where the blast radius is contained</li>
               <li>Never a direct database connection</li>
             </ul>
           </div>
@@ -555,6 +557,10 @@
             <div class="d">Agreed 22 October. A fresh sub-agent reviews your code before the pull request opens — never the agent that wrote it. Copilot runs a second, aggressive pass. The pull request goes to the builders' group rather than one named person, and a human reads what came back, skims the changes, and merges. The review is about business logic, not code style.</div>
           </div>
           <div class="step" style="--accent:var(--lane2)">
+            <div class="t">Writing back to production</div>
+            <div class="d">Settled 29 October. Writing to a live system does not automatically push you to Lane 3 &mdash; blast radius decides. Your agent carries your permissions and nothing more, so it cannot do more damage than you could. Route the write through the MCP server, run it on a scoped account, test it first, and talk to the data team before you build it.</div>
+          </div>
+          <div class="step" style="--accent:var(--lane2)">
             <div class="t">Lane 2 is not lesser, and it is broad</div>
             <div class="d">It can be a polished, well-built app. What differs is who owns it. Lane 2 is deliberately the widest lane — a tool twenty people depend on and a tool two hundred depend on both belong here.</div>
           </div>
@@ -569,6 +575,7 @@
             <ul>
               <li>More than roughly 25 users</li>
               <li>Touches sensitive personal, health, payment card, or financial data — enough that the dev team steps in</li>
+              <li>Writes back to a system of record, where a bad write takes many people to repair</li>
               <li>Gains external or customer-facing access</li>
               <li>Another system depends on its output</li>
               <li>A process halts if it stops for a day</li>
@@ -680,6 +687,14 @@
             <div class="d"><b>Company data is available to you and your AI agents.</b> The exceptions are sensitive HR data — pay rates, birthdays and the like — and Paylocity API access. You should not have to ask for anything outside that.</div>
           </div>
           <div class="step" style="--accent:var(--navy)">
+            <div class="t">Company AI accounts only &mdash; from 9 November</div>
+            <div class="d">Redmond data is reachable only from a company AI account. No personal accounts connecting to the MCP server. Data that leaves on a personal account leaves the company with it when the person does.</div>
+          </div>
+          <div class="step" style="--accent:var(--navy)">
+            <div class="t">Give an agent its own login, not yours</div>
+            <div class="d">For system access &mdash; an Acumatica API key, a reporting account &mdash; create a separate scoped user rather than handing over your own. If it misbehaves, its access gets cut without touching yours. Agents doing your personal work, which need your calendar and inbox, are a different case and still being worked out.</div>
+          </div>
+          <div class="step" style="--accent:var(--navy)">
             <div class="t">Why it matters</div>
             <div class="d">The worst case becomes a broken app rather than a data breach.</div>
           </div>
@@ -703,7 +718,7 @@
           </div>
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">Where your app and its data should live</div>
-            <div class="d">Sanctioned hosting and database options are being written now — including the trade-off between a free tier and a cheap Azure database, which comes down to how real-time your app has to be.</div>
+            <div class="d">Sanctioned hosting and database options are being written now — including the trade-off between a free tier and a cheap Azure database, which comes down to how real-time your app has to be. Still genuinely open as of 29 October: whether apps live in Azure, on a corporate account with a lighter hosting platform, or on whatever the builder already set up — and whether our data leaving Microsoft is acceptable at all.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">What moves an app up a lane</div>
@@ -711,7 +726,7 @@
           </div>
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">Who picks it up when you are unavailable</div>
-            <div class="d">Support by lane is settled. What is not is who covers a Lane 2 app day to day when the person who built it is out. A placeholder for a Lane 2 support function is deliberately left open — there is no significant backlog today, and we would rather name it when the need is real than pretend it is solved.</div>
+            <div class="d">Support by lane is settled. What is not is who covers a Lane 2 app day to day when the person who built it is out. <b>As of 29 October there is an interim answer</b> — the development team plus the new Lane 2 developer channel, effectively everybody, run as an experiment to see what the real volume looks like. If that proves too much, the answer is staffing.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">What we call the merges</div>
@@ -738,7 +753,7 @@
   <!-- ============ GAPS ============ -->
   <section class="gaps">
     <h2>Gaps and to-dos — what still has to be solved</h2>
-    <p class="sub">Everything here is unresolved as of 23 October. Each one is a real decision someone has to make, not a drafting detail. Two of them have nobody tracking them at all.</p>
+    <p class="sub">Everything here is unresolved as of 29 October. Each one is a real decision someone has to make, not a drafting detail. Two of them have nobody tracking them at all.</p>
 
     <div class="gaplist">
 
@@ -797,6 +812,18 @@
       </div>
 
       <div class="gap g-none">
+        <span class="q">Nothing would tell us an agent had gone off the rails</span>
+        <p class="a">Raised 29 October. What exists reduces the attack surface and limits blast radius, but it is passive. Logging exists and nothing is pointed at it. If an agent were misbehaving right now &mdash; or someone were attacking us &mdash; we would probably not know. A watching-mode layer that notifies before it acts is the shape of an answer, not a plan.</p>
+        <div class="trk"><span class="k none">No story yet</span></div>
+      </div>
+
+      <div class="gap g-open">
+        <span class="q">Where a pull request is required at all</span>
+        <p class="a">Much of what gets built is not a repository &mdash; an artifact, a dashboard, a small scheduled task. The working signal is that if you want to keep iterating on the code it belongs in GitHub, and a one-off that works and is never touched again does not. Where review is required, suggested, or unnecessary is not drawn yet.</p>
+        <div class="trk"><span class="k none">No story yet</span></div>
+      </div>
+
+      <div class="gap g-none">
         <span class="q">Lane 1 is invisible by construction</span>
         <p class="a">Lane 1 registers nothing, so the register holds no Lane 1 entries. That is correct by the rules — and it means the one lane where someone might be building against live data without realising it is the lane we cannot see into. The 1.5 on-ramp assumes the builder knows they have outgrown the sandbox.</p>
         <div class="trk"><span class="k none">No story yet</span></div>
@@ -816,6 +843,10 @@
   <details style="margin-top:10px">
     <summary style="cursor:pointer;color:var(--navy);font-weight:600">Version history</summary>
     <table style="border-collapse:collapse;margin-top:9px;font-size:11.5px">
+      <tr>
+        <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.14</b> &nbsp; 29 Oct 2026</td>
+        <td style="padding:3px 0">Writing back to a production system added — blast radius decides, not the fact of the write, with the conditions attached. Company AI accounts required for Redmond data from 9 November. Scoped logins for agents doing system work. Lane 2 support gained an interim answer: the dev team plus the new Lane 2 developer channel. Two new gaps — nothing would tell us an agent had gone off the rails, and where a pull request is required for work that never lands in a repository.</td>
+      </tr>
       <tr>
         <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.13</b> &nbsp; 26 Oct 2026</td>
         <td style="padding:3px 0">Register figures corrected. The 263 records are not all software — 196 are, and 67 are projects and musings. Of the software, 109 is Lane 2, 20 is Lane 3, and 67 has no lane assigned. The earlier wording implied most of the register was Lane 2.</td>

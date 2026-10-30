@@ -327,7 +327,7 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>AI &amp; App Development Lane Model</h1>
-    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1.14 &nbsp;|&nbsp; 29 October 2026</p>
+    <p>Sandbox → Paved Road → Engineered &nbsp;|&nbsp; DRAFT v1.15 &nbsp;|&nbsp; 30 October 2026</p>
   </div>
 </div>
 
@@ -432,7 +432,7 @@
           </div>
           <div class="step" style="--accent:var(--lane2)">
             <div class="t">Who owns and supports it</div>
-            <div class="d"><b>You own it.</b> IT and the data team support the environment — access, roles, licenses, hosting, connections, and the data sources underneath. <b>You are first line on the app itself</b>, with them to consult when you need it.</div>
+            <div class="d"><b>You own it, and you are first line on the app itself.</b> IT supports the environment — access, roles, licenses, hosting. The data team supports the data sources and MCP access. Neither fixes broken application code, though both are there to consult.</div>
           </div>
           <div class="step inset25">
             <div class="t"><svg class="ic" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#i-merge" xlink:href="#i-merge"/></svg>The merge — moving into Lane 3</div>
@@ -631,8 +631,8 @@
             <div class="d">The trade for total freedom.</div>
           </div>
           <div class="step" style="--accent:var(--lane2)">
-            <div class="t">Lane 2 — IT and the data team support the environment</div>
-            <div class="d">IT covers platform, hosting, identity and access. The data team covers the data sources and connections. You stay first line on the app itself, with both to consult.</div>
+            <div class="t">Lane 2 — you are first line; IT and the data team hold the ground underneath</div>
+            <div class="d">IT covers platform, hosting, identity and access. The data team covers data sources and MCP access. Neither fixes broken application code — you stay first line on the app itself, with both to consult.</div>
           </div>
           <div class="step" style="--accent:var(--lane2)">
             <div class="t">Lane 3 — the dev team</div>
@@ -713,12 +713,12 @@
             <div class="d">The default is settled — open, except sensitive HR data and Paylocity. What is still open is who approves an exception and who that escalates to.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
-            <div class="t">Who approves your pull request</div>
-            <div class="d">The review itself is settled. Who carries the responsibility for the final human approval is not — automated and AI review can run, but a person signs off, and nobody is named yet.</div>
+            <div class="t">Who reviews your work, and who approves it</div>
+            <div class="d">The automated half is settled. The human half now has a story of its own as of 30 October — who can review what, what a reviewer is accountable for looking at, and who signs off when a review fails. Nobody is named yet, and the story has no owner.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">Where your app and its data should live</div>
-            <div class="d">Sanctioned hosting and database options are being written now — including the trade-off between a free tier and a cheap Azure database, which comes down to how real-time your app has to be. Still genuinely open as of 29 October: whether apps live in Azure, on a corporate account with a lighter hosting platform, or on whatever the builder already set up — and whether our data leaving Microsoft is acceptable at all.</div>
+            <div class="d">Hosting and data are now one question rather than two, which is how the charter always treated them. Being written now — including the trade-off between a free tier and a cheap Azure database, which comes down to how real-time your app has to be. Still genuinely open: whether apps live in Azure, on a corporate account with a lighter hosting platform, or on whatever the builder already set up — and whether our data leaving Microsoft is acceptable at all.</div>
           </div>
           <div class="step" style="--accent:var(--lane1)">
             <div class="t">What moves an app up a lane</div>
@@ -753,7 +753,7 @@
   <!-- ============ GAPS ============ -->
   <section class="gaps">
     <h2>Gaps and to-dos — what still has to be solved</h2>
-    <p class="sub">Everything here is unresolved as of 29 October. Each one is a real decision someone has to make, not a drafting detail. Two of them have nobody tracking them at all.</p>
+    <p class="sub">Everything here is unresolved as of 30 October. Each one is a real decision someone has to make, not a drafting detail. Four of them have nobody tracking them at all.</p>
 
     <div class="gaplist">
 
@@ -771,13 +771,13 @@
 
       <div class="gap g-open">
         <span class="q">Who approves a Lane 2 pull request</span>
-        <p class="a">The review itself is designed. The accountable human is not named. Automated and AI review can run, but a person merges and carries it.</p>
-        <div class="trk">Tracked <span class="k">DEVSTD-29</span> unassigned</div>
+        <p class="a">The review itself is designed. The accountable human is not named. Automated and AI review can run, but a person merges and carries it. Split into its own story on 30 October, which is still unassigned.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-47</span> unassigned</div>
       </div>
 
       <div class="gap g-open">
         <span class="q">Who covers a Lane 2 app when the builder is out</span>
-        <p class="a">Shape, trigger to stand it up, and how priority is set when capacity is short. Deliberately deferred until there is a real backlog, which is a decision rather than an answer.</p>
+        <p class="a">Shape, trigger to stand it up, and how priority is set when capacity is short. Deliberately deferred until there is a real backlog, which is a decision rather than an answer. This is also Magic 8 standard #5, Support — one of two charter standards still unanswered.</p>
         <div class="trk">Tracked <span class="k">DEVSTD-32</span> Jeremiah</div>
       </div>
 
@@ -789,8 +789,8 @@
 
       <div class="gap g-open">
         <span class="q">Where your app and its data should live</span>
-        <p class="a">Until these land, "use the paved road" does not name a road. Hosting options and the criteria between them; database options and the latency trade-off that drives the choice.</p>
-        <div class="trk">Tracked <span class="k">DEVSTD-45</span><span class="k">DEVSTD-46</span> Stuart, Bryan</div>
+        <p class="a">Until this lands, "use the paved road" does not name a road. Hosting options and the criteria between them; database options and the latency trade-off that drives the choice. Merged into one story on 30 October, which now spans IT and the data team — so who owns it is open too.</p>
+        <div class="trk">Tracked <span class="k">DEVSTD-45</span> Stuart</div>
       </div>
 
       <div class="gap g-open">
@@ -843,6 +843,10 @@
   <details style="margin-top:10px">
     <summary style="cursor:pointer;color:var(--navy);font-weight:600">Version history</summary>
     <table style="border-collapse:collapse;margin-top:9px;font-size:11.5px">
+      <tr>
+        <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.15</b> &nbsp; 30 Oct 2026</td>
+        <td style="padding:3px 0">Lane 2 support corrected throughout — the builder is first line on the app, IT supports the environment, the data team supports data sources and MCP access, and neither fixes broken application code. Hosting and database standards merged into one question. Lane 2 peer review split into a story of its own. Project end date set at 31 May 2027. Story references updated after the 30 October board cleanup.</td>
+      </tr>
       <tr>
         <td style="padding:3px 14px 3px 0;vertical-align:top;white-space:nowrap"><b>v1.14</b> &nbsp; 29 Oct 2026</td>
         <td style="padding:3px 0">Writing back to a production system added — blast radius decides, not the fact of the write, with the conditions attached. Company AI accounts required for Redmond data from 9 November. Scoped logins for agents doing system work. Lane 2 support gained an interim answer: the dev team plus the new Lane 2 developer channel. Two new gaps — nothing would tell us an agent had gone off the rails, and where a pull request is required for work that never lands in a repository.</td>

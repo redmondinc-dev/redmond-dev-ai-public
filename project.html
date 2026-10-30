@@ -193,7 +193,7 @@
   <div class="wordmark">REDMOND</div>
   <div>
     <h1>Technology Governance and Standards</h1>
-    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 29 October 2026 &nbsp;|&nbsp; project renamed from Development Standards &amp; App Registration</p>
+    <p>Project status &nbsp;|&nbsp; PROJ-160 / DEVSTD &nbsp;|&nbsp; Updated 30 October 2026 &nbsp;|&nbsp; Jira project: Tech Governance &amp; Standards</p>
   </div>
 </div>
 
@@ -203,7 +203,7 @@
     <div class="stat"><div class="k">Phase</div><div class="v">1A, 1B &amp; 2B</div><div class="s">Running in parallel</div></div>
     <div class="stat"><div class="k">Sponsor</div><div class="v">Aaron</div><div class="s">IT owns the project</div></div>
     <div class="stat"><div class="k">Facilitator</div><div class="v">Kirt</div><div class="s">Weekly, Thursdays 1:00</div></div>
-    <div class="stat"><div class="k">Status</div><div class="v">Implementing</div><div class="s">Kicked off 3 September 2026</div></div>
+    <div class="stat"><div class="k">Status</div><div class="v">Implementing</div><div class="s">Kicked off 3 Sep 2026 · ends 31 May 2027</div></div>
   </div>
 
   <details class="whobox">
@@ -212,14 +212,14 @@
       <div class="whorow"><div class="r">Sponsor</div><div class="n">Aaron <small>CTO</small></div></div>
       <div class="whorow"><div class="r">Project owner</div><div class="n">IT Team</div></div>
       <div class="whorow"><div class="r">Facilitator</div><div class="n">Kirt <small>Projects team</small></div></div>
-      <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Stuart <small>IT — Teams architecture, authentication, agent and data egress. IT supports Lane 2.</small></div></div>
+      <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Stuart <small>IT — Teams architecture, authentication, agent and data egress. IT supports the Lane 2 environment.</small></div></div>
       <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Jeremiah <small>Dev team leader — development practice and infrastructure. The dev team supports Lane 3.</small></div></div>
       <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Bryan <small>Data — MCP server, data access, sandbox data</small></div></div>
       <div class="whorow"><div class="r">Development</div><div class="n">Phil <small>AI and MCP depth; registry and harness</small></div></div>
       <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Travis <small>Projects — cross-project view; monthly rather than weekly</small></div></div>
       <div class="whorow"><div class="r">Key stakeholder</div><div class="n">Ken <small>Admin — licensing, spend, and cost questions. Added 1 October as an optional attendee.</small></div></div>
       <div class="whorow"><div class="r">Stakeholders</div><div class="n">Justus, HR, Data Team, Optimization Team</div></div>
-      <div class="whorow"><div class="r">Support</div><div class="n">Lane 2 — IT and the data team support the environment &nbsp;·&nbsp; Lane 3 — Development team <small>Lane 1 is unsupported. The builder is first line on a Lane 2 app; who covers it beyond them is the open piece.</small></div></div>
+      <div class="whorow"><div class="r">Support</div><div class="n">Lane 2 — builder first line on the app; IT supports the environment; the data team supports data sources and MCP access &nbsp;·&nbsp; Lane 3 — Development team <small>Lane 1 is unsupported. Neither IT nor the data team fixes broken application code — who covers the app beyond its builder is the open piece.</small></div></div>
       <div class="whorow"><div class="r">Cadence</div><div class="n">Weekly, Thursdays at 1:00 <small>Broader stakeholder session roughly monthly</small></div></div>
     </div>
   </details>
@@ -247,10 +247,14 @@
     <p><strong>The audit kept growing.</strong> The register holds 263 records — 196 of them software (apps, integrations, data sources and services), the other 67 projects and musings. Of the software, 109 is Lane 2, 20 is Lane 3, and 67 has no lane assigned yet. Early estimates were ten or twenty. Lane 1 holds nothing, by design: it needs no registration.</p>
     <p><strong>Seeding is done.</strong> The registry is populated and the lane fields are on the entry template. The next step is moving it off Confluence — decided on 22 October, the permanent home is the existing projects site extended, not a new build.</p>
     <p><strong>The harness has started.</strong> Discovery closed on 22 October and the build is underway. Standards reach the builder's agent through the MCP server and organization-level skills; only two things hard-fail a merge — missing SSO and publicly exposed credentials. Everything else reports without blocking.</p>
-    <p><strong>Security priorities are ranked.</strong> Acumatica roles first, then per-user MCP server scoping, then table-level database permissions. The agreed posture: not the bare minimum and not perfection — a layer or two above the low-hanging fruit.</p>
+    <p><strong>Security priorities are ranked, and that story is closed.</strong> Acumatica roles first, then per-user MCP server scoping, then table-level database permissions. The agreed posture: not the bare minimum and not perfection — a layer or two above the low-hanging fruit. The one piece still live — table-level permissions — moved onto the data access story, where the access question belongs.</p>
     <p><strong>The model got its first real test.</strong> On 29 October the first request arrived to have an AI app write back to a production database. It was recognized and brought to the group rather than quietly connected &mdash; which is the gates working. Settled: writing to production does not automatically mean Lane 3. Blast radius decides. The agent carries its user's permissions and nothing more, the write routes through the MCP server, the account gets scoped, it gets tested, and the data team helps.</p>
     <p><strong>Company AI accounts, from 9 November.</strong> Redmond data becomes reachable only from a company account &mdash; no personal accounts on the MCP server. Voted in favour on 29 October. The MCP server already answers "what can I access?" per user, where a week earlier any session could see every tool.</p>
     <p><strong>The Lane 2 developer channel exists.</strong> Every Lane 2 builder the group knows of, plus the dev team. Peer review callouts, problems, and general programming support. For now it is also the interim answer to who supports Lane 2 &mdash; the dev team plus the channel, run as an experiment.</p>
+    <p><strong>The project has an end date.</strong> 31 May 2027, set on 30 October. It covers Phases 1A through 2B and the Phase 3 standards, and it is the point at which the standards are published and Tech Team Coordination carries the work as ongoing operations rather than as a project.</p>
+
+    <p><strong>The board was cleaned up on 30 October.</strong> Three epics rewritten to purpose only, eight stories trimmed back to one goal line plus criteria, two stories closed or merged, and one new story created for Lane 2 peer review. Every open story now sits at or under six acceptance criteria. Settled decisions live on these pages and in Confluence rather than accumulating inside the stories.</p>
+
     <p><strong>Nothing changes for anyone yet.</strong> No approvals, no permissions, no new process beyond the account change above. Visibility first.</p>
   </div>
 
@@ -273,9 +277,10 @@
         <li>Implementing the Acumatica role set <span>— Bryan</span></li>
         <li>Confirming the default access posture and the sensitive exception list <span>— Kirt</span></li>
         <li>Personal AI accounts decided — company accounts only from 9 November <span>— done 29 Oct</span></li>
-        <li>Connector approval process, still open <span>— Kirt</span></li>
+        <li>Connector approvals and external data <span>— Kirt</span></li>
         <li>Defining the data classification scheme <span>— Bryan</span></li>
         <li>Assessing SharePoint and file storage governance <span>— Stuart</span></li>
+        <li>Security priorities ranked <span>— closed 30 Oct</span></li>
       </ul>
     </div>
     <div class="track">
@@ -284,8 +289,8 @@
       <ul>
         <li>Building the harness itself, piloted on one repo first <span>— Phil</span></li>
         <li>Scoping MCP server access per user <span>— Phil, tracked in RMCP</span></li>
-        <li>Sanctioned hosting standards <span>— Stuart</span></li>
-        <li>Sanctioned database standards <span>— Bryan</span></li>
+        <li>Sanctioned hosting and database standards <span>— Stuart, merged 30 Oct</span></li>
+        <li>Defining the Lane 2 peer review process <span>— unassigned</span></li>
         <li>Conditions for writing back to production, applied case by case <span>— data team</span></li>
         <li>Lane 2 developer channel and the peer review habit <span>— Jeremiah</span></li>
       </ul>
@@ -327,12 +332,11 @@
           <p class="goal">As an employee building at Redmond, I need to know which lane my project falls into so that I understand what is expected of me without having to ask.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
-            <li>Settle the lane count — three, four, or merge lanes feeding into two and three</li>
-            <li>Define both merges — the identifiers, the process, and what changes hands — without them reading as extra lanes</li>
+            <li>Define both merges — the identifiers, the process, and what changes hands</li>
             <li>Confirm lane definitions are based on what an app needs and touches, not who built it</li>
             <li>Publish escalation identifiers as tests a builder can apply to themselves</li>
-            <li>Reconcile whether PII moves an app out of Lane 2 or is normal within it</li>
             <li>State the registration threshold — anything touching company data</li>
+            <li>Replace "PII" in the trigger list with the categories from the data classification scheme, so a builder can apply it</li>
             <li>Publish in plain language where builders will find it</li>
           </ul>
         </div>
@@ -342,15 +346,14 @@
         <summary><i class="dot d-todo"></i><span class="sname">Move the Registry to Its Final Home</span><span class="who">Jeremiah</span><span class="key">DEVSTD-34</span></summary>
         <div class="sbody">
           <p class="goal">As the project team, I need the registry in a database rather than Confluence so that entries can carry tracked fields and an agent can work with them.</p>
+          <p class="goal">Decided 22 October — extend the existing projects and musings site rather than build a new one.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
             <li>Columns defined from what seeding actually produced</li>
             <li>Tracked fields added — last checked, issues found</li>
-            <li>Runs after seeding and the data component are complete, so the migration starts from clean data</li>
-            <li>Confluence remains the seeding surface only, and is retired as the working surface once the move is done</li>
-            <li>Decided 22 October — the permanent home is the existing projects site, extended, not a new build</li>
-            <li>If a replacement is built instead, the existing site is decommissioned; two systems with the same purpose is the outcome to avoid</li>
-            <li>Target is roughly 95 percent of what the existing site already does, with lessons learned folded in</li>
+            <li>Hosting and endpoints recorded per entry, so renewal can check real usage</li>
+            <li>Migrated to the projects site, with Confluence retired as the working surface</li>
+            <li>Runs after seeding is complete, so the migration starts from clean data</li>
           </ul>
         </div>
       </details>
@@ -415,7 +418,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 1B — Governance Discovery<small>Understand the problem before proposing an architecture</small></span>
-      <span class="count">1 in progress · 6 to do</span>
+      <span class="count">1 in progress · 5 to do · 1 closed</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -446,6 +449,7 @@
             <li>Define the sensitive exception list, starting with HR data (pay rates, birthdays) and Paylocity API access</li>
             <li>Confirm the exception list with HR</li>
             <li>Agree who approves an exception and who it escalates to</li>
+            <li>Decide whether table-level database permissions are needed to hold the exception list, or whether access control sits above the database</li>
             <li>Document what an associate can expect without asking</li>
           </ul>
         </div>
@@ -468,29 +472,16 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Policy for Personal AI Accounts and Connector Approvals</span><span class="who">Kirt</span><span class="key">DEVSTD-43</span></summary>
+        <summary><i class="dot d-todo"></i><span class="sname">Connector Approvals and External Data</span><span class="who">Kirt</span><span class="key">DEVSTD-43</span></summary>
         <div class="sbody">
-          <p class="goal">As the project team, I need a decision on personal AI accounts and connector approvals so that company data stops leaving the organization by default.</p>
+          <p class="goal">As the project team, I need connector approvals reviewed before they are granted so that company data stops leaving the organization by default.</p>
+          <p class="goal">The account half was decided 29 October — company AI accounts required from 9 November. This story carries the connector half.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
-            <li><b>Decided 29 October</b> — a company AI account is required. From 9 November, Redmond data is reachable only from the company Claude account, the company ChatGPT account, or another corporate account. Voted in favour.</li>
             <li>Connector requests reviewed before approval rather than discovered after</li>
             <li>Team accounts evaluated, with connector sets scoped per team</li>
-            <li>The rule stated plainly and published — no app hosted outside Redmond resources may use Redmond data</li>
+            <li>The rule published: no app hosted outside Redmond resources may use Redmond data</li>
             <li>Remediation path defined for anything already outside</li>
-            <li>The trade against slowing AI learning and adoption weighed explicitly, not ignored</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Rank Security Priorities for the Harness</span><span class="who">Jeremiah</span><span class="key">DEVSTD-30</span></summary>
-        <div class="sbody">
-          <p class="goal">As the development team, I need to know which security checks matter most so that we build the highest-value gates into the harness first.</p>
-          <p class="goal"><strong>Ranked 22 October.</strong> First, Acumatica roles — the base layer for ERP and data access. Second, MCP server scoping — per-user Entra scoping, so a single call stops returning every tool to every caller. Third, table-level database permissions — read-only by default, write granted per table.</p>
-          <div class="ac">Still open</div>
-          <ul>
-            <li>Table-level database permissions scoped and owned — held by the data team; the obstacle is deciding who should see which tables across millions of records</li>
           </ul>
         </div>
       </details>
@@ -524,6 +515,16 @@
           </ul>
         </div>
       </details>
+
+      <div class="donehdr">Completed and merged</div>
+
+      <details class="story is-done">
+        <summary><i class="dot d-done"></i><span class="sname">Rank Security Priorities for the Harness</span><span class="who">Done</span><span class="key">DEVSTD-30</span></summary>
+        <div class="sbody">
+          <p class="goal">Closed 30 October. Ranked on 22 October: first Acumatica roles, the base layer for ERP and data access; second MCP server scoping, per-user Entra scoping so a single call stops returning every tool to every caller; third table-level database permissions, read-only by default with write granted per table. Posture agreed: not the bare minimum and not perfection — a layer or two above the low-hanging fruit.</p>
+          <p class="goal">The one live piece, table-level database permissions, moved onto DEVSTD-28, where the access decision belongs.</p>
+        </div>
+      </details>
     </div>
   </details>
 
@@ -546,10 +547,10 @@
           <p class="goal">As the project facilitator, I need Tech Team Coordination defined so that technology at Redmond has a standing group with clear ownership instead of being handled ad hoc.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
-            <li>Team purpose and scope agreed against the five responsibility areas in the epic</li>
+            <li>Group purpose and scope agreed against the five responsibility areas in the epic</li>
             <li>Roles defined, with a named lead and an owner for each responsibility area</li>
             <li>Members named and confirmed they accept the role</li>
-            <li>Decision authority documented — what the team decides alone and what escalates</li>
+            <li>Decision authority documented — what the group decides alone and what escalates</li>
             <li>Meeting cadence set</li>
             <li>Charter drafted and approved by the sponsor</li>
           </ul>
@@ -563,7 +564,7 @@
     <summary>
       <i class="chev"></i>
       <span class="pname">Phase 2B — Lanes Established and Supported<small>Run the model in practice</small></span>
-      <span class="count">8 to do · 1 closed</span>
+      <span class="count">8 to do · 2 closed · 1 tracked elsewhere</span>
       <span class="pill p-now">In progress</span>
     </summary>
     <div class="pbody">
@@ -571,7 +572,7 @@
       <p class="why">Added 22 October: <b>the harness is the delivery mechanism for all of it.</b> Standards reach the builder's agent through the MCP server and organization-level skills and settings, with hooks enforced in Claude Code. Only missing SSO and publicly exposed credentials hard-fail a merge; code-quality findings report without blocking. Repo provisioning carries the agent documentation and hooks from the moment a repo is created, and registration attaches there rather than as a separate step. It pilots on one repo before going organization-wide.</p>
       <p class="why">Added 29 October: <b>writing back to a production system does not automatically mean Lane 3.</b> Blast radius decides. An agent acting with its user's credentials is not new permission &mdash; it is the same permission used faster, and it cannot do more damage than that person could. A Lane 2 write routes through the MCP server, runs on a scoped account, gets tested, and goes through the data team, who review write requests individually for now. Also added: <b>company AI accounts only</b> from 9 November, and <b>scoped credentials for agents</b> doing system work rather than running as a real user.</p>
       <p class="why">Added 8 September: the Lane 3 handoff also decides <b>where an app lives</b> — embedded in Teams and Dash, or standalone. That call belongs to the team that will support it, made case by case at the point of promotion. The original builder keeps a voice on user experience and can still open pull requests.</p>
-      <p class="why">Added 10 September: <b>support splits by lane.</b> Lane 1 is unsupported. IT supports Lane 2 — the environment, access, roles, and licences — while the person who built the app is first line on the app itself. The development team supports Lane 3, with IT underneath.</p>
+      <p class="why">Added 10 September, corrected since: <b>support splits by lane.</b> Lane 1 is unsupported. In Lane 2 the builder is first line on the app itself, IT supports the environment — access, roles, licences, hosting — and the data team supports data sources and MCP access. Neither fixes broken application code. The development team supports Lane 3, with IT underneath.</p>
 
       <details class="story">
         <summary><i class="dot d-todo"></i><span class="sname">Begin Building the Harness</span><span class="who">Phil</span><span class="key">DEVSTD-38</span></summary>
@@ -579,12 +580,11 @@
           <p class="goal">As a builder, I need the harness to guide, gate, and record my build so that Redmond's standards apply without me having to remember them.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
-            <li>Standards and hard rules delivered to the builder's agent through the MCP server and organization-level skills and settings</li>
+            <li>Standards and hard rules delivered to the builder's agent through the MCP server and Claude organization-level settings</li>
             <li>Hooks enforced in Claude Code, with the limitation documented that Claude chat cannot enforce them</li>
-            <li>Hard-fail conditions limited to missing SSO and publicly exposed credentials</li>
-            <li>Code-quality findings reported but non-blocking</li>
+            <li>Hard-fail limited to missing SSO and publicly exposed credentials; code-quality findings report without blocking</li>
             <li>Repo provisioning carries the agent documentation and hooks from the moment the repo is created</li>
-            <li>Registration attaches at the point of provisioning rather than as a separate step</li>
+            <li>Registration attaches at provisioning rather than as a separate step</li>
             <li>Piloted on one repo and reported back before organization-wide rollout</li>
           </ul>
         </div>
@@ -598,17 +598,26 @@
           <ul>
             <li>Runs against Lane 2 repositories in the Redmond GitHub organization, built into the harness</li>
             <li>Catches leaked keys, hardcoded secrets, and critical security flaws</li>
-            <li>Adversarial sub-agent review before the pull request is opened — a fresh sub-agent with a clean context window; the agent that wrote the code never reviews its own code</li>
-            <li>Pull request posted to the builders' group rather than to one named reviewer</li>
-            <li>GitHub Copilot code review runs an aggressive pass as the second platform</li>
-            <li>Human reads what the review kicks back, skims the changed files, approves and merges</li>
-            <li>Applies at Lane 2 and above, on the basis that the blast radius already warrants it</li>
-            <li>Review framed around business logic rather than code quality</li>
-            <li>A Teams group for anyone building, used for review callouts, on a reciprocity basis — if you want your work reviewed, you review</li>
-            <li>Channel created 29 October — every Lane 2 developer plus the dev team, with an intro message and a primer on pull requests and adversarial review to follow</li>
-            <li>Adversarial review baked into a commit hook, and offered as a skill in the MCP server so anyone can run it</li>
-            <li>Where a pull request is required at all, for artifacts and scheduled tasks that never land in a repository</li>
-            <li>Owner of the final human approval named — still unresolved as of 29 October</li>
+            <li>Separates soft warnings from hard blocks — only missing SSO and publicly exposed credentials stop a merge</li>
+            <li>Critical findings forwarded to the development team</li>
+            <li>Does not stop a builder shipping a routine change; blocking outright pushes people off the paved road</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary><i class="dot d-todo"></i><span class="sname">Define the Lane 2 Peer Review Process</span><span class="who">Unassigned</span><span class="key">DEVSTD-47</span></summary>
+        <div class="sbody">
+          <p class="goal">As a Lane 2 builder, I need to know who reviews my app and what they look at so that peer review is a real check rather than a rubber stamp.</p>
+          <p class="goal">Split out of DEVSTD-29 on 30 October. Peer review at Lane 2 and above was settled 22 October; this story is the human half of it.</p>
+          <div class="ac">Acceptance criteria</div>
+          <ul>
+            <li>Reviewer pool named, with the rule for who can review what</li>
+            <li>Scope of the review defined — what a reviewer is accountable for looking at and what they are not</li>
+            <li>The adversarial element decided: whether a reviewing agent is pointed at the app to try to break it, and who runs it</li>
+            <li>Channel chosen for requesting and recording a review</li>
+            <li>A primer written so a reviewer with no development background can do the job</li>
+            <li>Approval authority named — who signs off, and what happens when a review fails</li>
           </ul>
         </div>
       </details>
@@ -630,28 +639,17 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Define Sanctioned Hosting Standards</span><span class="who">Stuart</span><span class="key">DEVSTD-45</span></summary>
+        <summary><i class="dot d-todo"></i><span class="sname">Define Sanctioned Hosting and Database Standards</span><span class="who">Stuart</span><span class="key">DEVSTD-45</span></summary>
         <div class="sbody">
-          <p class="goal">As a Lane 2 builder, I need a sanctioned answer for where my app lives so that I am not inventing hosting every time I finish something.</p>
+          <p class="goal">As a Lane 2 builder, I need a sanctioned answer for where my app and its data live so that I am not inventing hosting and picking a database by guesswork.</p>
+          <p class="goal">Merged on 30 October — the charter treats hosting and data as one question, so the two stories became one. It now spans IT and the data team, so ownership is open.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
             <li>Standard hosting options named, with the criteria for choosing between them</li>
             <li>The "own repo behind the data site" pattern documented as a supported option, including that it needs no DNS entry</li>
             <li>Guidance recorded that the free tier is the starting point, and what drives the move off it</li>
-            <li>Published where builders will actually find it, not only in Confluence</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Define Sanctioned Database Standards</span><span class="who">Bryan</span><span class="key">DEVSTD-46</span></summary>
-        <div class="sbody">
-          <p class="goal">As a Lane 2 builder, I need a sanctioned answer for where my data lives so that I am not choosing a database by guesswork.</p>
-          <div class="ac">Acceptance criteria</div>
-          <ul>
             <li>Standard database options named — relational, Fabric, blob storage — with the latency trade-off stated plainly</li>
-            <li>Guidance recorded that the move to a cheap Azure database is driven by how real-time the app has to be</li>
-            <li>Per-database resource limits considered as part of the standard</li>
+            <li>Per-database resource limits stated as part of the standard</li>
             <li>Published where builders will actually find it, not only in Confluence</li>
           </ul>
         </div>
@@ -664,7 +662,9 @@
           <div class="ac">Acceptance criteria</div>
           <ul>
             <li>Automated check that the app used the standard SSO method</li>
+            <li>Fires during build and deploy, and flags immediately when SSO is missing</li>
             <li>Define what user profile data a Lane 2 app may request — photos, names, emails</li>
+            <li>Distinguish delegated access (the user sees only their own data) from application-level access (the app sees everything)</li>
             <li>Failing the check means losing data access</li>
             <li>Runs without a person having to review every app</li>
           </ul>
@@ -672,21 +672,17 @@
       </details>
 
       <details class="story">
-        <summary><i class="dot d-todo"></i><span class="sname">Define the Lane 2 Support Function and the Forward-Deployed Engineer Role</span><span class="who">Jeremiah</span><span class="key">DEVSTD-32</span></summary>
+        <summary><i class="dot d-todo"></i><span class="sname">Define the Lane 2 Support Function</span><span class="who">Jeremiah</span><span class="key">DEVSTD-32</span></summary>
         <div class="sbody">
-          <p class="goal">As the development team, I need the Lane 2 support function and the forward-deployed engineer role defined so that we can staff the support layer Lane 2 needs.</p>
+          <p class="goal">As the development team, I need the Lane 2 support function defined so that we can staff the support layer Lane 2 needs.</p>
+          <p class="goal">Interim answer as of 29 October: the development team plus the Lane 2 developer channel, run as an experiment. This story defines the permanent one. Magic 8 standard #5, Support — open since September and one of the two charter standards still unanswered.</p>
           <div class="ac">Acceptance criteria</div>
           <ul>
-            <li>Define what the role does and does not do — analysis and communication rather than building to spec</li>
-            <li>Define how they drive the Lane 2 to Lane 3 decision, including when to route to the projects team</li>
-            <li>Set the skills profile — open to new ideas, strong on support and customer service</li>
-            <li>Estimate how many are needed and where they report</li>
             <li>Name what the function covers — the application layer, beyond the environment IT and the data team already support</li>
             <li>Decide its shape — a separate team, a consulting function, or additional development headcount</li>
-            <li>Set the trigger for standing it up, since there is no significant backlog today</li>
-            <li><b>Interim answer, 29 October</b> — the development team plus the Lane 2 developer channel, effectively everybody, run as an experiment. If the volume proves too much, the answer is staffing</li>
-            <li>Account for the scale problem — roughly a hundred of the registered apps trace back to a single builder, which does not scale</li>
-            <li>Confirm the builder stays first line, and what happens when they are unavailable</li>
+            <li>Define what the forward-deployed engineer role does and does not do, and how it drives the Lane 2 to Lane 3 decision</li>
+            <li>Estimate how many are needed and where they report</li>
+            <li>Set the trigger for standing it up</li>
             <li>State how priority is set when capacity is short — reach, not request order</li>
           </ul>
         </div>
@@ -729,6 +725,11 @@
         <summary><i class="dot d-done"></i><span class="sname">Discovery — What the Harness Is</span><span class="who">Done</span><span class="key">DEVSTD-40</span></summary>
         <div class="sbody"><p class="goal">Closed 22 October. Phil reported to the working group on what the harness is and how standards reach a builder's agent. The build follows in DEVSTD-38.</p></div>
       </details>
+
+      <details class="story is-done">
+        <summary><i class="dot d-done"></i><span class="sname">Define Sanctioned Database Standards</span><span class="who">Merged</span><span class="key">DEVSTD-46</span></summary>
+        <div class="sbody"><p class="goal">Merged into DEVSTD-45 on 30 October — hosting and data are one question, and the charter already treats them that way. All criteria carried over.</p></div>
+      </details>
     </div>
   </details>
 
@@ -742,10 +743,11 @@
     </summary>
     <div class="pbody">
       <p class="why">Deliberately last. Teams integration standards building on Stuart's existing work, plus the development team's own codebase, code practice, and tech stack standards — the Lane 3 engineering standards.</p>
+      <p class="why"><b>All three stories here are unassigned.</b> With an end date of 31 May 2027 that now covers the Phase 3 standards, these need owners before the back half of the schedule means anything.</p>
       <p class="why">Three more added 8 September, from the associate lifecycle session. A <b>standardized Redmond API layer</b> — auth and permissions through Entra, associate information through Fabric via Graph, other systems through Fabric, and Teams interactions. A <b>notification standard</b> — one bot for Associate Experience, a general bot for Lane 2 and Lane 3 apps, and a strict rule for what earns a notification. A <b>shared UI and brand standard</b> that AI-assisted builds can apply by default. None has an owner yet.</p>
       <details class="story">
         <summary><i class="dot d-todo"></i><span class="sname">Dev Team Tech Stack Recommendation</span><span class="who">—</span><span class="key">DEVSTD-5</span></summary>
-        <div class="sbody"><p class="goal">Recommended stacks for new development at Redmond.</p></div>
+        <div class="sbody"><p class="goal">Recommended stacks for new development at Redmond, so what an employee builds has a path to becoming a supported tool. Deferred 4 August — not a current roadblock. Revisit after Phases 1 and 2.</p></div>
       </details>
       <details class="story">
         <summary><i class="dot d-todo"></i><span class="sname">Gateway vs. Distributed API Architecture Decision</span><span class="who">—</span><span class="key">DEVSTD-6</span></summary>
@@ -768,13 +770,14 @@
   <h2 class="sec" style="margin-top:28px">What is still open</h2>
   <div class="rule"></div>
   <ul class="open">
-    <li><b>Who supports a Lane 2 app beyond its builder.</b> The one substantial gap left in the model. IT covers the environment and the data team covers data access, but no group owns the application layer once the builder is unavailable. Now scoped in DEVSTD-32, not yet answered.</li>
-    <li><b>Where Lane 2 apps and their data actually live.</b> Azure, a corporate account on a lighter hosting platform, or whatever the builder already set up — plus a database host. Raised again on 29 October with a new question attached: once our data leaves Microsoft, is that acceptable? Until this lands, "use the paved road" does not name a road.</li>
+    <li><b>Who supports a Lane 2 app beyond its builder.</b> The one substantial gap left in the model. IT covers the environment and the data team covers data sources and MCP access, but no group owns the application layer once the builder is unavailable. Scoped in DEVSTD-32, not yet answered — and it is Magic 8 standard #5, Support, which the charter has carried open since September.</li>
+    <li><b>What this costs.</b> Magic 8 standard #7 still reads "Amount TBD" from July. The end date is now set; the number behind it is not.</li>
+    <li><b>Where Lane 2 apps and their data actually live.</b> Azure, a corporate account on a lighter hosting platform, or whatever the builder already set up — plus a database host. Raised again on 29 October with a new question attached: once our data leaves Microsoft, is that acceptable? Until this lands, "use the paved road" does not name a road. Now one story, DEVSTD-45, which spans IT and the data team — so its owner is an open question too.</li>
     <li><b>Nothing would tell us an agent had gone off the rails.</b> Raised 29 October. The guardrails reduce the attack surface and limit blast radius, but they are passive. Logging exists and nothing is pointed at it. No story behind this yet.</li>
     <li><b>Where a pull request is required at all.</b> Artifacts, dashboards and scheduled tasks never land in a repository. The working signal is that code you want to keep iterating on belongs in GitHub; a one-off does not. Not drawn properly yet.</li>
     <li><b>Writing back to production, as a repeatable rule.</b> Settled in principle on 29 October — blast radius decides — but write requests are being reviewed individually for now, because the volume is low and the pattern is not understood well enough to automate. No story behind it.</li>
     <li><b>Agents with their own accounts for personal work.</b> Settled for system access: give an agent a scoped login rather than your own. Unsettled where the agent needs to be you, with your calendar and inbox.</li>
-    <li><b>Who approves a Lane 2 pull request.</b> Raised on 22 October and left open. Automated and AI review can run, but a person approves the merge and carries the responsibility. Nobody is named.</li>
+    <li><b>Who approves a Lane 2 pull request.</b> Raised on 22 October and left open. Automated and AI review can run, but a person approves the merge and carries the responsibility. Nobody is named. Now carried by DEVSTD-47, which is itself unassigned.</li>
     <li><b>How connector approval works.</b> Personal AI accounts were decided on 29 October; connector approvals were not. Requests have been approved without discussion, and at least one put Redmond data into a service we never approved. Team accounts with per-team connector sets is the proposal, not a decision.</li>
     <li><b>Who owns the Redmond data MCP server day to day.</b> Phil tracks it; Bryan owns the component. The development team's position is unknown. Recurring, and not captured in a story.</li>
     <li><b>Lane 2 builder buy-in.</b> The model has not yet been put to the people it most affects. Lane 3 buy-in is straightforward; Lane 2 is where the change actually lands.</li>
@@ -787,7 +790,7 @@
     <li><b>Who builds the standardized API layer.</b> Four parts agreed in principle on 8 September, none of them assigned.</li>
     <li><b>External and non-associate access.</b> Spouses, plus-ones, and partners get solved app by app today. Needs a standard.</li>
     <li><b>Premier to Azure hosting.</b> Roughly $7,800 a month today — about $3,100 for non-Acumatica hosting and a little over $4,000 for Acumatica — plus support hours billed per ticket. Cost is close to a wash; the case is isolation, flexibility and support value, and licensing is the deciding variable. Belongs to infrastructure rather than this project, but it shapes the hosting standard.</li>
-    <li><b>Timeline and budget.</b> No target date or estimate yet.</li>
+    <li><b>Budget.</b> The end date is set at 31 May 2027. The cost estimate is not — the charter still reads "Amount TBD", and PROJ-160 itself has yet to carry the date.</li>
   </ul>
 
   <h2 class="sec" style="margin-top:28px">Read more</h2>
@@ -798,6 +801,7 @@
     <a href="./why.html">Software Has Left the Dev Team<small>Executive briefing, with both decks</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/261685250">Tech Team Coordination<small>Charter — membership, authority, what escalates</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/243499011">Governance Responsibilities<small>The twenty responsibility areas</small></a>
+    <a href="https://redmondinc.atlassian.net/wiki/spaces/~701218138311c3e3142be8aad458a4d9888d9/pages/295043075">Magic 8 and Project Roles<small>The eight standards and the four roles</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/293240834">29 October Working Session<small>Production writes, company AI accounts, the Lane 2 channel</small></a>
     <a href="https://redmondinc.atlassian.net/wiki/spaces/TDP/pages/285999105">22 October Working Session<small>Harness, peer review, security ranking, registry home</small></a>
     <a href="https://projects.redmondinc.com/registry/">The Registry<small>Every app, API, MCP server and database, with owners</small></a>
